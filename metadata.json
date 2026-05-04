@@ -1,0 +1,12 @@
+{
+  "name": "Eyad Abu Aqel - Physiotherapist",
+  "description": "A professional and elegant website for Eyad Abu Aqel Physiotherapy Clinic in Abu Sinan, specializing in sports injuries and orthopedic rehabilitation.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": [
+    "Professional Healthcare UI",
+    "Dynamic Animations",
+    "Responsive Design"
+  ]
+}
