@@ -31,10 +31,10 @@ export const WhatsAppWidget = ({
       whileHover={{ scale: 1.1, opacity: 1 }}
       whileTap={{ scale: 0.9 }}
       onClick={handleOpenWhatsApp}
-      className="fixed bottom-4 sm:bottom-6 left-3 sm:left-6 !left-3 sm:!left-6 z-[70] w-12 h-12 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl flex items-center justify-center text-white transition-all group relative opacity-50 hover:opacity-100"
+      className="fixed bottom-4 sm:bottom-6 left-4 sm:left-6 !left-4 sm:!left-6 z-[70] w-14 h-14 sm:w-16 sm:h-16 bg-green-500 hover:bg-green-600 rounded-full shadow-2xl flex items-center justify-center text-white transition-all group relative opacity-50 hover:opacity-100"
       aria-label="WhatsApp chat"
     >
-      <MessageCircle size={24} strokeWidth={2.5} className="sm:w-8 sm:h-8" />
+      <MessageCircle size={28} strokeWidth={2.5} className="sm:w-8 sm:h-8" />
 
       {/* Pulse animation */}
       <motion.span

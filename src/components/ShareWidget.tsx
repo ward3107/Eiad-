@@ -74,7 +74,7 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
   };
 
   return (
-    <div className="fixed left-3 sm:left-6 top-1/2 -translate-y-1/2 z-[60] flex flex-col items-center gap-2 sm:gap-3">
+    <div className="fixed left-4 sm:left-6 top-1/2 -translate-y-1/2 z-[60] flex flex-col items-center gap-2 sm:gap-3">
       {/* Main Share Button */}
       <motion.button
         initial={{ scale: 0 }}
@@ -83,11 +83,11 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-10 h-10 sm:w-14 sm:h-14 bg-[#1E4D92] dark:bg-[#4B9CD3] hover:bg-[#1A1A1A] dark:hover:bg-white rounded-full shadow-2xl flex items-center justify-center text-white dark:text-gray-900 transition-all relative"
+        className="w-12 h-12 sm:w-14 sm:h-14 bg-[#1E4D92] dark:bg-[#4B9CD3] hover:bg-[#1A1A1A] dark:hover:bg-white rounded-full shadow-2xl flex items-center justify-center text-white dark:text-gray-900 transition-all relative"
         aria-label="Share"
         aria-expanded={isOpen}
       >
-        <Share2 size={18} strokeWidth={2.5} className="sm:w-6 sm:h-6" />
+        <Share2 size={20} strokeWidth={2.5} className="sm:w-6 sm:h-6" />
 
         {/* Pulse animation */}
         <motion.span
@@ -117,7 +117,7 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                     key="copy-check"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="w-9 h-9 sm:w-12 sm:h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-[10px] sm:text-xs font-bold"
+                    className="w-11 h-11 sm:w-12 sm:h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-xs sm:text-xs font-bold"
                   >
                     ✓
                   </motion.div>
@@ -131,10 +131,10 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => copyToClipboard()}
-                    className={`w-9 h-9 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
+                    className={`w-11 h-11 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
                     aria-label={option.name}
                   >
-                    <Icon size={16} strokeWidth={2.5} className="sm:w-5 sm:h-5" />
+                    <Icon size={18} strokeWidth={2.5} className="sm:w-5 sm:h-5" />
                   </motion.button>
                 );
               }
@@ -150,10 +150,10 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => option.href && handleShareClick(option.href)}
-                  className={`w-9 h-9 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
+                  className={`w-11 h-11 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
                   aria-label={option.name}
                 >
-                  <Icon size={16} strokeWidth={2.5} className="sm:w-5 sm:h-5" />
+                  <Icon size={18} strokeWidth={2.5} className="sm:w-5 sm:h-5" />
                 </motion.button>
               );
             })}
