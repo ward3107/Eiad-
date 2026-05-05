@@ -8,10 +8,11 @@ interface ShareWidgetProps {
   t?: {
     share?: string;
     copied?: string;
+    instagram?: string;
   };
 }
 
-export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
+export const ShareWidget = ({ dir = 'rtl', t }: ShareWidgetProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
 
@@ -19,6 +20,8 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
   const shareText = dir === 'rtl'
     ? 'פיזיותרפיה מקצועית ושיקום פציעות ספורט אצל איאד אבו עקל באבו סנאן'
     : 'Professional physiotherapy and sports rehabilitation at Eyad Abu Aqel in Abu Snan';
+
+  const instagramUrl = t?.instagram || 'https://www.instagram.com/eyad.abuaqel';
 
   const shareOptions = [
     {
@@ -38,7 +41,7 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
     {
       name: 'Instagram',
       icon: Instagram,
-      action: () => copyForInstagram(),
+      href: instagramUrl,
       color: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500',
       textColor: 'text-white'
     },
@@ -60,23 +63,6 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = shareUrl;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const copyForInstagram = async () => {
-    try {
-      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      const textArea = document.createElement('textarea');
-      textArea.value = `${shareText}\n${shareUrl}`;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
@@ -127,15 +113,11 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
             {shareOptions.map((option, index) => {
               const Icon = option.icon;
 
-              // Copy Link and Instagram buttons (actions)
-              if (option.name === 'Copy Link' || option.name === 'Instagram') {
-                const checkKey = option.name === 'Instagram' ? 'insta-check' : 'copy-check';
-                const buttonKey = option.name === 'Instagram' ? 'instagram-btn' : 'copy-link-btn';
-                const handleClick = option.name === 'Instagram' ? copyForInstagram : copyToClipboard;
-
+              // Copy Link button (action) - only Copy Link shows checkmark
+              if (option.name === 'Copy Link') {
                 return copied ? (
                   <motion.div
-                    key={checkKey}
+                    key="copy-check"
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
                     exit={{ scale: 0 }}
@@ -145,14 +127,14 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                   </motion.div>
                 ) : (
                   <motion.button
-                    key={buttonKey}
+                    key="copy-link-btn"
                     initial={{ opacity: 0, x: -20, scale: 0 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{ opacity: 0, x: -20, scale: 0 }}
                     transition={{ delay: index * 0.05, duration: 0.2 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={handleClick}
+                    onClick={() => copyToClipboard()}
                     className={`w-11 h-11 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
                     aria-label={option.name}
                   >
@@ -161,7 +143,7 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                 );
               }
 
-              // Social share buttons (links)
+              // All social share buttons (WhatsApp, Facebook, Instagram) - links
               return (
                 <motion.button
                   key={option.name}

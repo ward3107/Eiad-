@@ -92,7 +92,7 @@ export default function App() {
         lang={lang}
       />
       <BackToTop />
-      <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} />
+      <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} t={{ instagram: currentTranslations.instagram }} />
       <WhatsAppWidget
         phoneNumber={currentTranslations.whatsapp?.phone || '0502834280'}
         message={currentTranslations.whatsapp?.bookingMessage || 'Hi, I would like to book an appointment'}
