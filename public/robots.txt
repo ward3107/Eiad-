@@ -1,3 +1,16 @@
+# Robots.txt for Eyad Abu Aqel Physiotherapy Website
+# Allow all crawlers
+
 User-agent: *
 Allow: /
-Sitemap: https://ais-dev-stbqm2hhvoekh767n7dalz-562045622210.europe-west2.run.app/sitemap.xml
+
+# Disallow specific paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap location
+Sitemap: https://eyad-physiotherapy.com/sitemap.xml
+
+# Crawl delay (optional, prevents server overload)
+Crawl-delay: 1

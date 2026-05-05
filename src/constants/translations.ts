@@ -2,18 +2,19 @@ export const translations = {
   he: {
     dir: 'rtl',
     name: 'איאד אבו עקל',
-    title: 'פיזיותרפיסט מוסמך',
+    title: 'פיזיותרפיסט מוסמך ומומחה כאב',
     nav: {
       services: 'שירותים',
       portfolio: 'תיק עבודות',
       about: 'אודות',
       testimonials: 'המלצות',
       gallery: 'גלריה',
+      blog: 'בלוג',
       contact: 'צור קשר',
       booking: 'קביעת תור'
     },
     hero: {
-      badge: 'מומחה לשיקום ופציעות ספורט',
+      badge: 'פיזיותרפיסט מוסמך, מומחה כאב ושיקום ספורט',
       title1: 'מחזירים אתכם',
       title2: 'לתנועה מלאה',
       desc: 'פיזיותרפיה מקצועית ומותאמת אישית לכל מטופל. אצלנו תקבלו את המענה המקצועי ביותר לשיקום מפציעות, הפחתת כאבים ושיפור איכות החיים.',
@@ -69,7 +70,7 @@ export const translations = {
       title: 'הכירו את',
       accent: 'איאד אבו עקל',
       exp: 'שנות ניסיון בקליניקה',
-      p1: 'איאד אבו עקל הוא פיזיותרפיסט מוסמך (B.P.T) בעל ניסיון עשיר בטיפול בפציעות ספורט, בעיות אורתופדיות וניהול כאב כרוני. בגישה אישית ומקצועית, איאד מלווה כל מטופל משלב האבחון הראשוני ועד להשגת המטרות.',
+      p1: 'איאד אבו עקל הוא פיזיותרפיסט מוסמך (B.P.T) ומומחה כאב בעל ניסיון עשיר בטיפול בפציעות ספורט, בעיות אורתופדיות וניהול כאב כרוני. בגישה אישית ומקצועית, איאד מלווה כל מטופל משלב האבחון הראשוני ועד להשגת המטרות.',
       p2: 'בקליניקה שלנו באבו סנאן, אנו משלבים ידע רפואי עדכני יחד עם טכניקות מתקדמות וציוד מודרני כדי להבטיח את התוצאות הטובות ביותר.',
       feature1: 'תכנית טיפול אישית',
       feature1Desc: 'מותאמת בדיוק לצרכים ולמטרות שלך.',
@@ -78,6 +79,7 @@ export const translations = {
       certificationsTitle: 'הסמכות מקצועיות',
       certifications: [
         'תואר ראשון בפיזיותרפיה (B.P.T)',
+        'מומחה בניהול כאב כרוני',
         'מוסמך לדיקור יבש (Dry Needling)',
         'שיקום פציעות ספורט ואורתופדיה',
         'טיפולי רקמה רכה ועיסוי רפואי',
@@ -111,6 +113,7 @@ export const translations = {
       addressTag: 'כתובת המרפאה',
       address: 'אבו סנאן, מרכז הכפר',
       phoneTag: 'טלפון לקביעת תורים',
+      phone: '050-2834280',
       hoursTag: 'שעות פעילות',
       hours: 'א-ה: 08:00 - 20:00 | ו: 08:00 - 14:00',
       formTitle: 'השאירו פרטים ונחזור אליכם',
@@ -121,7 +124,25 @@ export const translations = {
       placeholderName: 'הכנס את שמך...',
       placeholderPhone: 'הכנס מספר טלפון...',
       placeholderMessage: 'ספר לנו בקצרה...',
-      instagram: 'https://www.instagram.com/eyad.abuaqel'
+      instagram: 'https://www.instagram.com/eyad.abuaqel/',
+      whatsapp: 'https://wa.me/972502834280'
+    },
+    whatsapp: {
+      phone: '0502834280',
+      bookingMessage: 'היי, אני רוצה לקבוע תור לפיזיותרפיה',
+      chatBubble: 'צור קשר איתנו!',
+      close: 'סגור'
+    },
+    socialProof: {
+      title: 'מה המטופלים',
+      accent: 'אומרים עלינו',
+      subtitle: 'הצטרפו לאלפי מטופלים מרוצים ועקבו אחרינו ברשתות החברתיות',
+      basedOn: 'מבוסס על',
+      reviews: 'ביקורות',
+      rateOnGoogle: 'דרגו אותנו ב-Google',
+      followUs: 'עקבו אחרינו',
+      facebookPage: 'Eyad Abu Aqel Physiotherapy',
+      followPrompt: 'העיפו אותנו לתמונות ועדכונים יומיים'
     },
     ctaBar: {
       title: 'זקוקים לטיפול דחוף?',
@@ -156,6 +177,69 @@ export const translations = {
         { id: 'case2', title: 'כאב גב תחתון כרוני', category: 'אורתופדיה', description: 'שיפור בעוצמת הכאב וחזרה לשגרה לאחר שנים של פריצת דיסק, בזכות טכניקות ופרוטוקול שיקום מותאם.', result: 'הפחתת כאב ב-80%', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
         { id: 'case3', title: 'שיקום החלפת מפרק ברך', category: 'שיקום פוסט-ניתוחי', description: 'מטופל בן 65 הגיע למצב עצמאות תפקודית מלאה והשגת טווחים אופטימליים בתוך 8 שבועות.', result: 'טווח תנועה מלא', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800' }
       ]
+    },
+    blog: {
+      tag: 'בלוג וידע',
+      title: 'מאמרים ומידע',
+      accent: 'מקצועי',
+      description: 'מידע מקצועי ועדכני בתחום הפיזיותרפיה, הטיפולים והשיקום',
+      allCategories: 'הכל',
+      readMore: 'קרא עוד',
+      tags: 'תגיות',
+      close: 'סגור',
+      posts: [
+        {
+          id: 'post1',
+          title: 'מניעת פציעות ספורט - טיפים למתאמנים',
+          excerpt: 'פציעות ספורט יכולות להיות מתסכלות, אבל רובן ניתנות למניעה. במאמר זה נסקור את הדרכים היעילות ביותר להפחתת הסיכון לפציעה במהלך אימון.',
+          categories: ['הדרכה', 'ספורט'],
+          date: '15 באפריל 2026',
+          readTime: '5 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['פציעות ספורט', 'מניעה', 'חימום', 'מתיחות'],
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'התחממות נכונה לפני אימון היא שלב קריטי שרבים מזניחים. חימום של 10-15 דקות שכולל פעילות אירובית קלה ומתיחות דינמיות יכול להפחית משמעותית את הסיכון לפציעות שריר ומפרק.',
+            'חשוב להקשיב לגוף שלכם. כאב הוא אות אזהרה - אם משהו כואב, הפסיקו ובדקו. אל תנסו "לעבור דרך" הכאב, שכן זה עלול להחמיר את הפציעה ולהאריך את זמן ההחלמה.',
+            'ציוד מתאים הוא הכרחי. נעליים עם תמיכה נכונה, ביגוד נוח והגנה מתאימה יכולים למנוע פציעות רבות. השקיעו בציוד איכותי - זה חוסך כאב וכסף בטווח הארוך.',
+            'מנוחה מספקת היא קריטית. הגוף מתחזק ומתחדש בזמן המנוחה, לא בזמן האימון. ודאו שאתם מקבלים לפחות 7-8 שעות שינה בלילה וימי מנוחה בין אימונים אינטנסיביים.'
+          ]
+        },
+        {
+          id: 'post2',
+          title: 'טיפול בכאב גב - גישה מקיפה',
+          excerpt: 'כאב גב הוא אחד המצבים השכיחים ביותר שאנו מטפלים בו. גישה מקיפה המשלבת טיפול ידני, תרגילים ושינויי הרגלי חיים יכולה להביא להקלה משמעותית.',
+          categories: ['גב', 'טיפול'],
+          date: '10 באפריל 2026',
+          readTime: '6 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['כאב גב', 'פריצת דיסק', 'טיפול ידני', 'תרגילים'],
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'כאב גב יכול לנבוע ממגוון סיבות - פציעות ספורט, ישיבה ממושכת, עומס יתר, או בעיות רפואיות. אבחון מדויק הוא המפתח לטיפול יעיל.',
+            'טיפול ידני כולל טכניקות כמו שחרור שרירים, עיסוי רקמות עמוק ופעילות מפרקית. אלה עוזרים לשחרור מתחים, שיפור זרימת הדם והפחתת כאב.',
+            'תרגילים ייעודיים הם חלק חשוב מהטיפול. חיזוק שרירי הליבה, שיפור גמישות ותיקון תנוחות גוף שגויות יכולים למנוע הישנות של הכאב.',
+            'שינויי הרגלים חשובים לא פחות. תנוחה נכונה בישיבה, התעמלות סדירה ושמירה על משקל בריא יכולים לשפר משמעותית את המצב.'
+          ]
+        },
+        {
+          id: 'post3',
+          title: 'החלמה אחרי ניתוח ACL - מה לצפות',
+          excerpt: 'ניתוח קריעת רצועה צולבת קדמית הוא תהליך מאתגר. שיקום מקצועי ומונחה הוא המפתח לחזרה מלאה לפעילות.',
+          categories: ['שיקום', 'ניתוח'],
+          date: '5 באפריל 2026',
+          readTime: '7 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['ACL', 'ניתוח', 'שיקום', 'ספורט'],
+          image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'השבועות הראשונים אחרי הניתוח מתמקדים בהפחתת נפיחות, שמירת טווח תנועה בסיסי וחיזוק שרירים קלים. המטרה היא להגיע ליישור מלא של הברך.',
+            'לאחר כחודש מתחילים בשלב השיקום הפעיל. חיזוק מתקדם, שיפור יציבות והחזרה לפעילות נורמלית. כל מטופל מתקדם בקצב שונה לפי יכולותיו.',
+            'החזרה לספורט דורשת תכנון קפדני. בדיקות פונקציונליות, בדיקות כוח ואימונים ספציפיים לסוג הספורט - כל אלה חלק מהתהליך.',
+            'בממוצע, שחקני כדורגל חוזרים למגרש תוך 6-9 חודשים. אבל האיכות חשובה יותר מהמהירות - חזרה מוקדמת מעלה את הסיכון לפציעה חוזרת.'
+          ]
+        }
+      ]
     }
   },
   en: {
@@ -168,6 +252,7 @@ export const translations = {
       about: 'About',
       testimonials: 'Testimonials',
       gallery: 'Gallery',
+      blog: 'Blog',
       contact: 'Contact',
       booking: 'Book Session'
     },
@@ -270,6 +355,7 @@ export const translations = {
       addressTag: 'Clinic Address',
       address: 'Abu Sinan, Village Center',
       phoneTag: 'Booking Phone',
+      phone: '050-2834280',
       hoursTag: 'Working Hours',
       hours: 'Sun-Thu: 08:00 - 20:00 | Fri: 08:00 - 14:00',
       formTitle: 'Leave Details and We\'ll Return to You',
@@ -280,7 +366,25 @@ export const translations = {
       placeholderName: 'Enter your name...',
       placeholderPhone: 'Enter phone number...',
       placeholderMessage: 'Tell us briefly...',
-      instagram: 'https://www.instagram.com/eyad.abuaqel'
+      instagram: 'https://www.instagram.com/eyad.abuaqel/',
+      whatsapp: 'https://wa.me/972502834280'
+    },
+    whatsapp: {
+      phone: '0502834280',
+      bookingMessage: 'Hi, I would like to book a physiotherapy appointment',
+      chatBubble: 'Chat with us!',
+      close: 'Close'
+    },
+    socialProof: {
+      title: 'What Patients',
+      accent: 'Say About Us',
+      subtitle: 'Join hundreds of satisfied patients and follow us on social media',
+      basedOn: 'Based on',
+      reviews: 'reviews',
+      rateOnGoogle: 'Rate Us on Google',
+      followUs: 'Follow Us',
+      facebookPage: 'Eyad Abu Aqel Physiotherapy',
+      followPrompt: 'Follow us for photos and daily updates'
     },
     ctaBar: {
       title: 'Need Urgent Treatment?',
@@ -315,6 +419,69 @@ export const translations = {
         { id: 'case2', title: 'Chronic Lower Back Pain', category: 'Orthopedics', description: 'Significant pain reduction and return to daily routine after years of disc herniation, using adapted rehab protocol.', result: '80% pain reduction', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
         { id: 'case3', title: 'Knee Replacement Rehab', category: 'Post-Op Rehab', description: 'A 65-year-old patient achieved full functional independence and optimal range of motion within 8 weeks.', result: 'Full range of motion', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800' }
       ]
+    },
+    blog: {
+      tag: 'Blog & Education',
+      title: 'Articles &',
+      accent: 'Knowledge',
+      description: 'Professional insights and up-to-date information on physiotherapy, treatments, and rehabilitation',
+      allCategories: 'All',
+      readMore: 'Read More',
+      tags: 'Tags',
+      close: 'Close',
+      posts: [
+        {
+          id: 'post1',
+          title: 'Preventing Sports Injuries - Tips for Athletes',
+          excerpt: 'Sports injuries can be frustrating, but most are preventable. In this article, we cover the most effective ways to reduce injury risk during training.',
+          categories: ['Education', 'Sports'],
+          date: 'April 15, 2026',
+          readTime: '5 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['sports injuries', 'prevention', 'warmup', 'stretching'],
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Proper warm-up before training is a critical step that many overlook. A 10-15 minute warm-up including light aerobic activity and dynamic stretching can significantly reduce the risk of muscle and joint injuries.',
+            'Listen to your body. Pain is a warning sign - if something hurts, stop and assess. Don\'t try to "push through" pain, as this can worsen the injury and prolong recovery time.',
+            'Proper equipment is essential. Shoes with good support, comfortable clothing, and appropriate protection can prevent many injuries. Invest in quality gear - it saves pain and money in the long run.',
+            'Adequate rest is critical. Your body strengthens and repairs during rest, not during training. Ensure you get at least 7-8 hours of sleep per night and rest days between intense workouts.'
+          ]
+        },
+        {
+          id: 'post2',
+          title: 'Treating Back Pain - A Comprehensive Approach',
+          excerpt: 'Back pain is one of the most common conditions we treat. A comprehensive approach combining manual therapy, exercises, and lifestyle changes can bring significant relief.',
+          categories: ['Back', 'Treatment'],
+          date: 'April 10, 2026',
+          readTime: '6 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['back pain', 'herniated disc', 'manual therapy', 'exercises'],
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Back pain can stem from various causes - sports injuries, prolonged sitting, overexertion, or medical conditions. Accurate diagnosis is the key to effective treatment.',
+            'Manual therapy includes techniques like muscle release, deep tissue massage, and joint mobilization. These help release tension, improve blood flow, and reduce pain.',
+            'Targeted exercises are an important part of treatment. Strengthening core muscles, improving flexibility, and correcting poor posture can prevent pain recurrence.',
+            'Lifestyle changes are equally important. Proper sitting posture, regular exercise, and maintaining a healthy weight can significantly improve your condition.'
+          ]
+        },
+        {
+          id: 'post3',
+          title: 'ACL Surgery Recovery - What to Expect',
+          excerpt: 'ACL reconstruction surgery is a challenging process. Professional and guided rehabilitation is the key to full return to activity.',
+          categories: ['Rehab', 'Surgery'],
+          date: 'April 5, 2026',
+          readTime: '7 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['ACL', 'surgery', 'rehabilitation', 'sports'],
+          image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'The first few weeks after surgery focus on reducing swelling, maintaining basic range of motion, and strengthening light muscles. The goal is to achieve full knee extension.',
+            'After about a month, active rehabilitation begins. Progressive strengthening, stability improvement, and return to normal activities. Each patient progresses at their own pace based on their abilities.',
+            'Return to sport requires careful planning. Functional tests, strength assessments, and sport-specific drills are all part of the process.',
+            'On average, soccer players return to the pitch within 6-9 months. But quality matters more than speed - early return increases the risk of re-injury.'
+          ]
+        }
+      ]
     }
   },
   ru: {
@@ -327,6 +494,7 @@ export const translations = {
       about: 'О нас',
       testimonials: 'Отзывы',
       gallery: 'Галерея',
+      blog: 'Блог',
       contact: 'Контакты',
       booking: 'Записаться'
     },
@@ -439,7 +607,25 @@ export const translations = {
       placeholderName: 'Введите имя...',
       placeholderPhone: 'Введите номер...',
       placeholderMessage: 'Кратко опишите ситуацию...',
-      instagram: 'https://www.instagram.com/eyad.abuaqel'
+      instagram: 'https://www.instagram.com/eyad.abuaqel/',
+      whatsapp: 'https://wa.me/972502834280'
+    },
+    whatsapp: {
+      phone: '0502834280',
+      bookingMessage: 'Привет, я хотел бы записаться на прием к физиотерапевту',
+      chatBubble: 'Напишите нам!',
+      close: 'Закрыть'
+    },
+    socialProof: {
+      title: 'Что пациенты',
+      accent: 'говорят о нас',
+      subtitle: 'Присоединяйтесь к сотням довольных пациентов и подпишитесь на нас в социальных сетях',
+      basedOn: 'На основе',
+      reviews: 'отзывов',
+      rateOnGoogle: 'Оцените нас на Google',
+      followUs: 'Подпишитесь на нас',
+      facebookPage: 'Физиотерапия Эйяд Абу Акиль',
+      followPrompt: 'Подпишитесь на фото и ежедневные обновления'
     },
     ctaBar: {
       title: 'Нужна срочная помощь?',
@@ -474,6 +660,69 @@ export const translations = {
         { id: 'case2', title: 'Хроническая боль в пояснице', category: 'Ортопедия', description: 'Значительное снижение боли и возвращение к повседневной жизни после многих лет грыжи диска, благодаря адаптированному протоколу реабилитации.', result: 'Снижение боли на 80%', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
         { id: 'case3', title: 'Реабилитация после эндопротезирования коленного сустава', category: 'Послеоперационная реабилитация', description: '65-летний пациент достиг полной функциональной независимости и оптимального диапазона движений в течение 8 недель.', result: 'Полный диапазон движений', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800' }
       ]
+    },
+    blog: {
+      tag: 'Блог',
+      title: 'Статьи и',
+      accent: 'Знания',
+      description: 'Профессиональная информация о физиотерапии, лечении и реабилитации',
+      allCategories: 'Все',
+      readMore: 'Читать далее',
+      tags: 'Теги',
+      close: 'Закрыть',
+      posts: [
+        {
+          id: 'post1',
+          title: 'Профилактика спортивных травм - советы для спортсменов',
+          excerpt: 'Спортивные травмы могут быть неприятными, но большинство из них можно предотвратить. В этой статье мы рассмотрим наиболее эффективные способы снижения риска травм во время тренировок.',
+          categories: ['Образование', 'Спорт'],
+          date: '15 апреля 2026',
+          readTime: '5 мин чтения',
+          author: 'Эйяд Абу Акель',
+          tags: ['спортивные травмы', 'профилактика', 'разминка', 'растяжка'],
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Правильная разминка перед тренировкой - критически важный шаг, который многие упускают. Разминка 10-15 минут, включающая легкую аэробную активность и динамическую растяжку, может значительно снизить риск травм мышц и суставов.',
+            'Слушайте свое тело. Боль - это сигнал тревоги - если что-то болит, остановитесь и оцените ситуацию. Не пытайтесь "прорваться" сквозь боль, так как это может усугубить травму и продлить время восстановления.',
+            'Правильное снаряжение имеет решающее значение. Обувь с хорошей поддержкой, удобная одежда и соответствующая защита могут предотвратить множество травм. Инвестируйте в качественное снаряжение - это сэкономит боль и деньги в долгосрочной перспективе.',
+            'Адекватный отдых критически важен. Ваше тело укрепляется и восстанавливается во время отдыха, а не во время тренировок. Убедитесь, что вы получаете не менее 7-8 часов сна в сутки и дни отдыха между интенсивными тренировками.'
+          ]
+        },
+        {
+          id: 'post2',
+          title: 'Лечение боли в спине - комплексный подход',
+          excerpt: 'Боль в спине - одно из самых распространенных состояний, которые мы лечим. Комплексный подход, сочетающий мануальную терапию, упражнения и изменения образа жизни, может принести значительное облегчение.',
+          categories: ['Спина', 'Лечение'],
+          date: '10 апреля 2026',
+          readTime: '6 мин чтения',
+          author: 'Эйяд Абу Акель',
+          tags: ['боль в спине', 'грыжа диска', 'мануальная терапия', 'упражнения'],
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Боль в спине может быть вызвана различными причинами - спортивными травмами, длительным сидением, чрезмерным напряжением или медицинскими состояниями. Точный диагноз - ключ к эффективному лечению.',
+            'Мануальная терапия включает такие методы, как высвобождение мышц, глубокий массаж тканей и мобилизация суставов. Они помогают снять напряжение, улучшить кровоток и уменьшить боль.',
+            'Целенаправленные упражнения являются важной частью лечения. Укрепление мышц кора, улучшение гибкости и коррекция плохой осанки могут предотвратить рецидив боли.',
+            'Изменения образа жизни не менее важны. Правильная осанка при сидении, регулярные упражнения и поддержание здорового веса могут значительно улучшить ваше состояние.'
+          ]
+        },
+        {
+          id: 'post3',
+          title: 'Восстановление после операции ПКС - чего ожидать',
+          excerpt: 'Операция по реконструкции ПКС - сложный процесс. Профессиональная и управляемая реабилитация - ключ к полному возвращению к активности.',
+          categories: ['Реабилитация', 'Операция'],
+          date: '5 апреля 2026',
+          readTime: '7 мин чтения',
+          author: 'Эйяд Абу Акель',
+          tags: ['ПКС', 'операция', 'реабилитация', 'спорт'],
+          image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Первые несколько недель после операции фокусируются на снижении отечности, сохранении базового диапазона движений и укреплении легких мышц. Цель - достичь полного разгибания колена.',
+            'Примерно через месяц начинается активная реабилитация. Прогрессивное укрепление, улучшение стабильности и возвращение к нормальной активности. Каждый пациент прогрессирует в своем собственном темпе в зависимости от своих способностей.',
+            'Возвращение к спорту требует тщательного планирования. Функциональные тесты, оценка силы и специфические для вида спорта упражнения - все это часть процесса.',
+            'В среднем футболисты возвращаются на поле в течение 6-9 месяцев. Но качество важнее скорости - раннее возвращение увеличивает риск повторной травмы.'
+          ]
+        }
+      ]
     }
   },
   ar: {
@@ -486,6 +735,7 @@ export const translations = {
       about: 'حولنا',
       testimonials: 'آراء المرضى',
       gallery: 'المعرض',
+      blog: 'المدونة',
       contact: 'اتصل بنا',
       booking: 'حجز موعد'
     },
@@ -598,7 +848,25 @@ export const translations = {
       placeholderName: 'أدخل اسمك...',
       placeholderPhone: 'أدخل رقم الهاتف...',
       placeholderMessage: 'أخبرنا باختصار...',
-      instagram: 'https://www.instagram.com/eyad.abuaqel'
+      instagram: 'https://www.instagram.com/eyad.abuaqel/',
+      whatsapp: 'https://wa.me/972502834280'
+    },
+    whatsapp: {
+      phone: '0502834280',
+      bookingMessage: 'مرحباً، أريد حجز موعد للعلاج الطبيعي',
+      chatBubble: 'تحدث معنا!',
+      close: 'إغلاق'
+    },
+    socialProof: {
+      title: 'ماذا يقول',
+      accent: 'المرضى عنا',
+      subtitle: 'انضم إلى مئات المرضى الراضين وتابعنا على وسائل التواصل الاجتماعي',
+      basedOn: 'بناءً على',
+      reviews: 'تقييم',
+      rateOnGoogle: 'قيمنا على Google',
+      followUs: 'تابعنا',
+      facebookPage: 'العلاج الطبيعي إياد أبو عقل',
+      followPrompt: 'تابعنا للحصول على الصور والتحديثات اليومية'
     },
     ctaBar: {
       title: 'هل تحتاج إلى علاج عاجل؟',
@@ -633,6 +901,69 @@ export const translations = {
         { id: 'case2', title: 'ألم أسفل الظهر المزمن', category: 'جراحة العظام', description: 'تقليل الألم بشكل كبير والعودة إلى الروتين اليومي بعد سنوات من الانزلاق الغضروفي، بفضل بروتوكول التأهيل المخصص.', result: 'انخفاض الألم بنسبة 80٪', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
         { id: 'case3', title: 'تأهيل استبدال مفصل الركبة', category: 'تأهيل ما بعد الجراحة', description: 'وصل مريض يبلغ من العمر 65 عاماً إلى الاستقلال الوظيفي الكامل ونطاق الحركة الأمثل للركبة خلال 8 أسابيع.', result: 'نطاق حركة كامل', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800' }
       ]
+    },
+    blog: {
+      tag: 'المدونة والمعرفة',
+      title: 'مقالات',
+      accent: 'مهنية',
+      description: 'معلومات مهنية وحديثة في مجال العلاج الطبيعي والعلاج والتأهيل',
+      allCategories: 'الكل',
+      readMore: 'اقرأ المزيد',
+      tags: 'الوسوم',
+      close: 'إغلاق',
+      posts: [
+        {
+          id: 'post1',
+          title: 'منع الإصابات الرياضية - نصائح للرياضيين',
+          excerpt: 'الإصابات الرياضية يمكن أن تكون محبطة، ولكن معظمها يمكن الوقاية منها. في هذه المقالة، نغطي أكثر الطرق فعالية لتقليل خطر الإصابة أثناء التدريب.',
+          categories: ['تعليم', 'رياضة'],
+          date: '15 أبريل 2026',
+          readTime: '5 دقائق قراءة',
+          author: 'إياد أبو عقل',
+          tags: ['إصابات رياضية', 'الوقاية', 'الإحماء', 'التمديد'],
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'الإحماء الصحيح قبل التمرين هو خطوة حرجة يتغافل عنها الكثيرون. الإحماء لمدة 10-15 دقيقة بما في ذلك النشاط الهوائي الخفيف والتمديد الديناميكي يمكن أن يقلل بشكل كبير من خطر إصابات العضلات والمفاصل.',
+            'استمع إلى جسمك. الألم هو إشارة تحذيرية - إذا كان شيء يؤلمك، توقف وقيم الوضع. لا تحاول "الضغط" عبر الألم، لأن هذا يمكن أن يزيد من سوء الإصابة ويطيل وقت التعافي.',
+            'المعدات المناسبة ضرورية. الأحذية ذات الدعم الجيد والملابس المريحة والحماية المناسبة يمكن أن تمنع العديد من الإصابات. استثمر في معدات عالية الجودة - يوفر ذلك الألم والمال على المدى الطويل.',
+            'الراحة الكافية أمر بالغ الأهمية. جسمك يقوي ويجدد نفسه أثناء الراحة وليس أثناء التدريب. تأكد من حصولك على 7-8 ساعات من النوم على الأقل في اليوم وأيام راحة بين التدريبات المكثفة.'
+          ]
+        },
+        {
+          id: 'post2',
+          title: 'علاج آلام الظهر - نهج شامل',
+          excerpt: 'ألم الظهر هو أحد أكثر الحالات شيوعاً التي نعالجها. النهج الشامل الذي يجمع بين العلاج اليدوي والتمارين وتغييرات نمط الحياة يمكن أن يجلح راحة كبيرة.',
+          categories: ['الظهر', 'علاج'],
+          date: '10 أبريل 2026',
+          readTime: '6 دقائق قراءة',
+          author: 'إياد أبو عقل',
+          tags: ['ألم الظهر', 'انزلاق غضروفي', 'علاج يدوي', 'تمارين'],
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'يمكن أن ينجم ألم الظهر عن أسباب مختلفة - إصابات رياضية أو الجلوس لفترات طويلة أو الإجهاد الزائد أو حالات طبية. التشخيص الدقيق هو مفتاح العلاج الفعال.',
+            'العلاج اليدوي يشمل تقنيات مثل إطلاق العضلات والتدليك العميق للأنسجة وتحسين المفاصل. تساعد هذه على إطلاق التوتر وتحسين تدفق الدم وتقليل الألم.',
+            'التمارين المستهدفة هي جزء مهم من العلاج. تقوية عضلات الجذع وتحسين المرونة وتصحيح الوضعية السيئة يمكن أن تمنع عودة الألم.',
+            'تغييرات نمط الحياة ليست أقل أهمية. الوضعية الصحيحة عند الجلوس والتمارين المنتظمة والحفاظ على وزن صحي يمكن أن يحسن حالتك بشكل كبير.'
+          ]
+        },
+        {
+          id: 'post3',
+          title: 'التعافي بعد جراحة ACL - ما الذي تتوقعه',
+          excerpt: 'جراحة إعادة بناء الرباط الصليبي الأمامي هي عملية صعبة. إعادة التأهيل المهنية والموجهة هي مفتاح العودة الكاملة إلى النشاط.',
+          categories: ['إعادة التأهيل', 'جراحة'],
+          date: '5 أبريل 2026',
+          readTime: '7 دقائق قراءة',
+          author: 'إياد أبو عقل',
+          tags: ['ACL', 'جراحة', 'إعادة التأهيل', 'رياضة'],
+          image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'تركز الأسابيع القليلة الأولى بعد الجراحة على تقليل التورم والحفاظ على النطاق الأساسي للحركة وتقوية العضلات الخفيفة. الهدف هو الوصول إلى تمديد كامل للركبة.',
+            'بعد حوالي شهر تبدأ إعادة التأهيل النشطة. التقوية التدريجية وتحسين الاستقرار والعودة إلى الأنشطة الطبيعية. يتقدم كل مريض وتيرته الخاصة بناءً على قدراته.',
+            'العودة إلى الرياضة تتطلب تخطيطاً دقيقاً. الاختبارات الوظيفية وتقييمات القوة والتدريبات الخاصة بالرياضة - كلها جزء من العملية.',
+            'في المتوسط، يعود لاعبو كرة القدم إلى الملعب خلال 6-9 أشهر. لكن الجودة أهم من السرعة - العودة المبكرة تزيد من خطر الإصابة مرة أخرى.'
+          ]
+        }
+      ]
     }
   },
   el: {
@@ -645,6 +976,7 @@ export const translations = {
       about: 'Σχετικά',
       testimonials: 'Μαρτυρίες',
       gallery: 'Γκαλερί',
+      blog: 'Blog',
       contact: 'Επικοινωνία',
       booking: 'Κλείστε Ραντεβού'
     },
@@ -757,7 +1089,25 @@ export const translations = {
       placeholderName: 'Το όνομά σας...',
       placeholderPhone: 'Το τηλέφωνό σας...',
       placeholderMessage: 'Πείτε μας σύντομα...',
-      instagram: 'https://www.instagram.com/eyad.abuaqel'
+      instagram: 'https://www.instagram.com/eyad.abuaqel/',
+      whatsapp: 'https://wa.me/972502834280'
+    },
+    whatsapp: {
+      phone: '0502834280',
+      bookingMessage: 'Γεια σας, θα ήθελα να κλείσω ραντεβού φυσικοθεραπείας',
+      chatBubble: 'Συνομιλήστε μαζί μας!',
+      close: 'Κλείσιμο'
+    },
+    socialProof: {
+      title: 'Τι λένε οι',
+      accent: 'ασθενείς για εμάς',
+      subtitle: 'Γίνετε μέρος εκατοντάδων ευχαριστημένων ασθενών και ακολουθήστε μας στα social media',
+      basedOn: 'Με βάση',
+      reviews: 'κριτικές',
+      rateOnGoogle: 'Βαθμολογήστε μας στο Google',
+      followUs: 'Ακολουθήστε μας',
+      facebookPage: 'Φυσικοθεραπεία Eyad Abu Aqel',
+      followPrompt: 'Ακολουθήστε μας για φωτογραφίες και καθημερινές ενημερώσεις'
     },
     ctaBar: {
       title: 'Χρειάζεστε Επείγουσα Θεραπεία;',
@@ -791,6 +1141,69 @@ export const translations = {
         { id: 'case1', title: 'Μετεγχειρητική Αποκατάσταση Ρήξης Πρόσθιου Χιαστού Συνδέσμου (ACL)', category: 'Αθλητικοί Τραυματισμοί', description: 'Βέλτιστη επιστροφή στην αθλητική δραστηριότητα για έναν ποδοσφαιριστή μέσα σε 6 μήνες μετά την επέμβαση.', result: 'Πλήρης επιστροφή στο γήπεδο', image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800' },
         { id: 'case2', title: 'Χρόνιος Πόνος στη Μέση', category: 'Ορθοπεδική', description: 'Σημαντική μείωση του πόνου και επιστροφή στην καθημερινή ρουτίνα μετά από χρόνια κήλης δίσκου, χάρη σε προσαρμοσμένο πρωτόκολλο αποκατάστασης.', result: 'Μείωση πόνου κατά 80%', image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800' },
         { id: 'case3', title: 'Αποκατάσταση Αρθροπλαστικής Γόνατος', category: 'Μετεγχειρητική Αποκατάσταση', description: 'Ασθενής 65 ετών έφτασε σε πλήρη λειτουργική ανεξαρτησία και βέλτιστο εύρος κίνησης μέσα σε 8 εβδομάδες.', result: 'Πλήρες εύρος κίνησης', image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800' }
+      ]
+    },
+    blog: {
+      tag: 'Blog & Εκπαίδευση',
+      title: 'Άρθρα &',
+      accent: 'Γνώση',
+      description: 'Επαγγελματικές πληροφορίες για φυσικοθεραπεία, θεραπείες και αποκατάσταση',
+      allCategories: 'Όλα',
+      readMore: 'Διαβάστε περισσότερα',
+      tags: 'Ετικέτες',
+      close: 'Κλείσιμο',
+      posts: [
+        {
+          id: 'post1',
+          title: 'Πρόληψη Αθλητικών Τραυματισμών - Συμβουλές για Αθλητές',
+          excerpt: 'Οι αθλητικοί τραυματισμοί μπορεί να είναι απογοητευτικοί, αλλά οι περισσότεροι είναι αποτρέψιμοι. Σε αυτό το άρθρο, καλύπτουμε τους πιο αποτελεσματικούς τρόπους μείωσης του κινδύνου τραυματισμού κατά την προπόνηση.',
+          categories: ['Εκπαίδευση', 'Αθλητισμός'],
+          date: '15 Απριλίου 2026',
+          readTime: '5 λεπτά αναγνώσεις',
+          author: 'Eyad Abu Aqel',
+          tags: ['αθλητικοί τραυματισμοί', 'πρόληψη', 'ζέσταμα', 'διατάσεις'],
+          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Η σωστή προθέρμανση πριν την προπόνηση είναι ένα κρίσιμο βήμα που πολλοί αγνοούν. Μια προθέρμανση 10-15 λεπτών που περιλαμβάνει ελαφρά αερόβια δραστηριότητα και δυναμικές διατάσεις μπορεί να μειώσει σημαντικά τον κίνδυνο τραυματισμών μυών και αρθρώσεων.',
+            'Ακούστε το σώμα σας. Ο πόνος είναι ένα σημάδι προειδοποίησης - αν κάτι πονάει, σταματήστε και αξιολογήστε την κατάσταση. Μην προσπαθείτε να "περάσετε" μέσα από τον πόνο, καθώς αυτό μπορεί να επιδεινώσει τον τραυματισμό και να παρατείνει τον χρόνο ανάκαμψης.',
+            'Ο κατάλληλος εξοπλισμός είναι απαραίτητος. Παπούτσια με καλή υποστήριξη, άνετα ρούχα και κατάλληλη προστασία μπορούν να αποτρέψουν πολλούς τραυματισμούς. Επενδύστε σε εξοπλισμό ποιότητας - εξοικονομεί πόνο και χρήματα μακροπρόθεσμα.',
+            'Η επαρκής ξεκούραση είναι κρίσιμη. Το σώμα σας δυναμώνει και αποκαθίσταται κατά την ξεκούραση, όχι κατά την προπόνηση. Βεβαιωθείτε ότι έχετε τουλάχιστον 7-8 ώρες ύπnu ανά βράδυ και ημέρες ξεκούρασης μεταξύ των έντονων προπονήσεων.'
+          ]
+        },
+        {
+          id: 'post2',
+          title: 'Θεραπεία Πόνου στη Μέση - Ολιστική Προσέγγιση',
+          excerpt: 'Ο πόνος στη μέση είναι μία από τις πιο συχνές καταστάσεις που treatingwe. Μια ολιστική προσέγγιση που συνδυάζει χειροκίνητη θεραπεία, ασκήσεις και αλλαγές στον τρόπο ζωής μπορεί να φέρει σημαντική ανακούφιση.',
+          categories: ['Μέση', 'Θεραπεία'],
+          date: '10 Απριλίου 2026',
+          readTime: '6 λεπτά αναγνώσεις',
+          author: 'Eyad Abu Aqel',
+          tags: ['πόνος στη μέση', 'κήλη δίσκου', 'χειροκίνητη θεραπεία', 'ασκήσεις'],
+          image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Ο πόνος στη μέση μπορεί να προκληθεί από διάφορες αιτίες - αθλητικούς τραυματισμούς, παρατεταμένη καθιστή θέση, υπερβολική προσπάθεια ή ιατρικές καταστάσεις. Η ακριβής διάγνωση είναι το κλειδί για την αποτελεσματική θεραπεία.',
+            'Η χειροκίνητη θεραπεία περιλαμβάνει τεχνικές όπως απελευθέρωση μυών, βαθύ μασάζ ιστών και κινητοποίηση αρθρώσεων. Αυτά βοηθούν στην απελευθέρωση του έντασης, τη βελτίωση της ροής του αίματος και τη μείωση του πόνου.',
+            'Οι στοχευμένες ασκήσεις είναι σημαντικό μέρος της θεραπείας. Η ενδυνάμωση των μυών του κορμού, η βελτίωση της ευλυγισίας και η διόρθωση της κακής στάσης σώματος μπορούν να αποτρέψουν την επανεμφάνιση του πόνου.',
+            'Οι αλλαγές στον τρόπο ζωής είναι εξίσου σημαντικές. Η σωστή στάση σώματος κατά την καθιστή θέση, τακτική άσκηση και η διατήρηση ενός υγιούς βάρους μπορούν να βελτιώσουν σημαντικά την κατάστασή σας.'
+          ]
+        },
+        {
+          id: 'post3',
+          title: 'Ανάκαμψη μετά από Χειρουργείο ACL - Τι να Περιμένετε',
+          excerpt: 'Η χειρουργική αποκατάσταση του πρόσθιου χιαστού συνδέσμου είναι μια απαιτητική διαδικασία. Η επαγγελματική και καθοδηγούμενη αποκατάσταση είναι το κλειδί για την πλήρη επιστροφή στη δραστηριότητα.',
+          categories: ['Αποκατάσταση', 'Χειρουργείο'],
+          date: '5 Απριλίου 2026',
+          readTime: '7 λεπτά αναγνώσεις',
+          author: 'Eyad Abu Aqel',
+          tags: ['ACL', 'χειρουργείο', 'αποκατάσταση', 'αθλητισμός'],
+          image: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Οι πρώτες εβδομάδες μετά την επέμβαση εστιάζονται στη μείωση του οιδήματος, τη διατήρηση του βασικού εύρους κίνησης και την ενδυνάμωση των ελαφριών μυών. Ο στόχος είναι η πλήρης έκταση του γόνατος.',
+            'Μετά από περίπου ένα μήνα ξεκινά η ενεργή αποκατάσταση. Προοδευτική ενδυνάμωση, βελτίωση της σταθερότητας και επιστροφή στην κανονική δραστηριότητα. Κάθε ασθενής προοδεύεται με τον δικό του ρυθμό με βάση τις ικανότητές του.',
+            'Η επιστροφή στον αθλητισμό απαιτεί προσεκτικό σχεδιασμό. Λειτουργικές δοκιμές, αξιολογήσεις δύναμης και αθλητικά ειδικά κυκλώματα - όλα είναι μέρος της διαδικασίας.',
+            'Στο μέσον όρο, οι ποδοσφαιριστές επιστρέφουν στο γήπεδο εντός 6-9 μηνών. Αλλά η ποιότητα είναι πιο σημαντική από την ταχύτητα - η πρόωρη επιστροφή αυξάνει τον κίνδυνο επανατραυματισμού.'
+          ]
+        }
       ]
     }
   }

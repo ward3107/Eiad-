@@ -26,11 +26,6 @@ export const About = ({ t }: { t: any }) => {
               />
             </div>
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&q=80&w=1000" 
-                alt={`${t.name} - ${t.title}`} 
-                className="rounded-3xl h-96 w-full object-cover mb-4 shadow-xl"
-              />
               <motion.div 
                 whileHover={{ scale: 1.05 }}
                 className="bg-[#1E4D92] dark:bg-[#4B9CD3] p-6 rounded-3xl text-white dark:text-gray-900 shadow-2xl relative overflow-hidden group"

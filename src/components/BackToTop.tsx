@@ -26,7 +26,7 @@ export const BackToTop = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 left-8 z-[60] w-14 h-14 bg-[#1E4D92] dark:bg-[#4B9CD3] text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#1A1A1A] dark:hover:bg-white transition-colors group"
+          className="fixed bottom-28 left-6 z-[60] w-14 h-14 bg-[#1E4D92] dark:bg-[#4B9CD3] text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#1A1A1A] dark:hover:bg-white transition-colors group"
         >
           <ChevronUp className="group-hover:-translate-y-1 transition-transform" />
           <div className="absolute -top-1 px-2 py-0.5 bg-[#4B9CD3] dark:bg-[#1E4D92] text-[10px] text-white font-bold rounded-full opacity-0 group-hover:opacity-100 transition-opacity">TOP</div>

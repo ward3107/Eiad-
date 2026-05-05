@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Phone, Clock, Facebook, Instagram, MessageCircle, Activity, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Clock, Facebook, Instagram, MessageCircle, Activity, CheckCircle2, AlertCircle } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
+import { useRateLimit } from '../hooks/useRateLimit';
 
 export const Contact = ({ t }: { t: any }) => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
   const [errors, setErrors] = useState({ name: '', phone: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // Rate limiting for form submissions
+  const {
+    canSubmit,
+    remainingAttempts,
+    isBlocked,
+    resetTime,
+    recordAttempt,
+    reset: resetRateLimit
+  } = useRateLimit({
+    maxAttempts: 3,
+    windowMs: 60000,        // 1 minute
+    cooldownMs: 300000,     // 5 minutes
+    storageKey: 'contact-form-rate-limit'
+  });
 
   const validate = () => {
     let isValid = true;
@@ -38,7 +54,15 @@ export const Contact = ({ t }: { t: any }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Check rate limit
+    if (!canSubmit) {
+      return;
+    }
+
     if (validate()) {
+      recordAttempt(); // Record this submission attempt
+
       setIsSubmitting(true);
       setTimeout(() => {
         setIsSubmitting(false);
@@ -65,10 +89,10 @@ export const Contact = ({ t }: { t: any }) => {
             <div className="space-y-6">
               {[
                 { icon: <MapPin size={28} />, tag: t.contact.addressTag, val: t.contact.address },
-                { icon: <Phone size={28} />, tag: t.contact.phoneTag, val: "052-1234567", dir: "ltr" },
+                { icon: <Phone size={28} />, tag: t.contact.phoneTag, val: t.contact.phone || "050-2834280", dir: "ltr", isPhone: true },
                 { icon: <Clock size={28} />, tag: t.contact.hoursTag, val: t.contact.hours }
               ].map((item, i) => (
-                <motion.div 
+                <motion.div
                   key={i}
                   whileHover={{ x: t.dir === 'rtl' ? -8 : 8 }}
                   className={`flex items-center gap-6 p-6 rounded-[2rem] bg-[#F9F9F9] dark:bg-gray-800 border border-gray-100 dark:border-white/5 hover:bg-[#F5F2ED] dark:hover:bg-gray-700 transition-all group ${t.dir === 'rtl' ? '' : 'flex-row-reverse'}`}
@@ -78,21 +102,33 @@ export const Contact = ({ t }: { t: any }) => {
                   </div>
                   <div className={t.dir === 'rtl' ? 'text-right' : 'text-left'}>
                     <p className="text-xs text-[#6B7280] dark:text-gray-400 font-bold uppercase tracking-widest mb-1 opacity-70">{item.tag}</p>
-                    <p className="text-xl font-bold text-[#1A1A1A] dark:text-white" dir={item.dir || t.dir}>{item.val}</p>
+                    {item.isPhone ? (
+                      <a href={`tel:${item.val.replace(/-/g, '')}`} className="text-xl font-bold text-[#1A1A1A] dark:text-white hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] transition-colors" dir={item.dir || t.dir}>
+                        {item.val}
+                      </a>
+                    ) : (
+                      <p className="text-xl font-bold text-[#1A1A1A] dark:text-white" dir={item.dir || t.dir}>{item.val}</p>
+                    )}
                   </div>
                 </motion.div>
               ))}
             </div>
 
             <div className={`mt-12 flex gap-4 ${t.dir === 'rtl' ? '' : 'justify-end'}`}>
-               {[Facebook, Instagram, MessageCircle].map((Icon, i) => (
-                  <motion.a 
+               {[
+                 { icon: Facebook, href: 'https://www.facebook.com' },
+                 { icon: Instagram, href: t.contact.instagram || 'https://www.instagram.com/eyad.abuaqel' },
+                 { icon: MessageCircle, href: t.contact.whatsapp || 'https://wa.me/972502834280', isWhatsApp: true }
+               ].map((item, i) => (
+                  <motion.a
                     key={i}
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    href="#" 
-                    className="w-14 h-14 rounded-full bg-[#1A1A1A] dark:bg-white flex items-center justify-center text-white dark:text-gray-900 hover:bg-[#1E4D92] dark:hover:bg-[#4B9CD3] transition-all shadow-lg"
+                    href={item.href}
+                    target={item.isWhatsApp ? '_blank' : undefined}
+                    rel={item.isWhatsApp ? 'noopener noreferrer' : undefined}
+                    className={`w-14 h-14 rounded-full ${item.isWhatsApp ? 'bg-green-500 hover:bg-green-600' : 'bg-[#1A1A1A] dark:bg-white hover:bg-[#1E4D92] dark:hover:bg-[#4B9CD3]'} flex items-center justify-center text-white dark:text-gray-900 transition-all shadow-lg`}
                   >
-                    <Icon size={24} />
+                    <item.icon size={24} />
                   </motion.a>
                ))}
             </div>
@@ -107,7 +143,47 @@ export const Contact = ({ t }: { t: any }) => {
             className="bg-[#1A1A1A] dark:bg-gray-800 rounded-[3.5rem] p-8 md:p-14 text-white relative overflow-hidden shadow-2xl transition-colors"
           >
             <div className="relative z-10" dir={t.dir}>
-              <h4 className="text-3xl font-serif font-light mb-10 text-white/90">{t.contact.formTitle}</h4>
+              <h4 className="text-3xl font-serif font-light mb-6 text-white/90">{t.contact.formTitle}</h4>
+
+              {/* Rate Limit Warning */}
+              {isBlocked && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mb-6 p-4 bg-orange-500/20 border border-orange-500/50 rounded-2xl flex items-start gap-3"
+                >
+                  <AlertCircle className="shrink-0 text-orange-400 mt-0.5" size={20} />
+                  <div className="flex-1">
+                    <p className="font-bold text-orange-300 mb-1">
+                      {t.dir === 'rtl' ? 'יותר מדי ניסיונות' : 'Too Many Attempts'}
+                    </p>
+                    <p className="text-sm text-white/70">
+                      {t.dir === 'rtl'
+                        ? `נא להמתין לפני שליחת הודעה נוספת. ניתן לנסות שוב בעוד ${Math.ceil(((resetTime || 0) - Date.now()) / 60000)} דקות.`
+                        : `Please wait before sending another message. You can try again in ${Math.ceil(((resetTime || 0) - Date.now()) / 60000)} minutes.`
+                      }
+                    </p>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Remaining Attempts Warning */}
+              {!isBlocked && remainingAttempts < 3 && remainingAttempts > 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="mb-6 p-3 bg-yellow-500/10 border border-yellow-500/30 rounded-xl flex items-center gap-2"
+                >
+                  <AlertCircle className="shrink-0 text-yellow-400" size={16} />
+                  <p className="text-sm text-yellow-200">
+                    {t.dir === 'rtl'
+                      ? `נותרו ${remainingAttempts} ניסיונות לשליחה`
+                      : `${remainingAttempts} submission${remainingAttempts > 1 ? 's' : ''} remaining`
+                    }
+                  </p>
+                </motion.div>
+              )}
+
               <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                 <div className="relative">
                   <label htmlFor="name" className="block text-xs uppercase tracking-widest opacity-60 mb-3 font-bold italic">{t.contact.labelName}</label>
@@ -168,17 +244,30 @@ export const Contact = ({ t }: { t: any }) => {
                 </div>
                 
                 <div className="pt-4">
-                  <motion.button 
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    disabled={isSubmitting}
-                    aria-label={isSuccess ? (t.dir === 'rtl' ? 'נשלח בהצלחה' : 'Sent successfully') : t.contact.submit}
-                    className={`w-full ${isSuccess ? 'bg-green-500' : 'bg-[#4B9CD3]'} text-[#1A1A1A] font-bold py-6 rounded-full hover:bg-white transition-all shadow-xl text-lg tracking-wide uppercase flex items-center justify-center gap-3 overflow-hidden`}
+                  <motion.button
+                    whileHover={canSubmit && !isSubmitting ? { scale: 1.02 } : {}}
+                    whileTap={canSubmit && !isSubmitting ? { scale: 0.98 } : {}}
+                    disabled={isSubmitting || isBlocked || !canSubmit}
+                    aria-label={isSuccess
+                      ? (t.dir === 'rtl' ? 'נשלח בהצלחה' : 'Sent successfully')
+                      : isBlocked
+                        ? (t.dir === 'rtl' ? 'חסום זמנית' : 'Temporarily blocked')
+                        : t.contact.submit
+                    }
+                    className={`w-full font-bold py-6 rounded-full transition-all shadow-xl text-lg tracking-wide uppercase flex items-center justify-center gap-3 overflow-hidden ${
+                      isSuccess
+                        ? 'bg-green-500 hover:bg-green-600 text-white'
+                        : isBlocked
+                          ? 'bg-gray-500 cursor-not-allowed text-white/50'
+                          : 'bg-[#4B9CD3] hover:bg-white text-[#1A1A1A] cursor-pointer'
+                    }`}
                   >
                     {isSubmitting ? (
                       <Activity className="animate-spin" size={24} />
                     ) : isSuccess ? (
                       <CheckCircle2 size={24} />
+                    ) : isBlocked ? (
+                      <AlertCircle size={24} />
                     ) : (
                       t.contact.submit
                     )}
@@ -193,25 +282,25 @@ export const Contact = ({ t }: { t: any }) => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 md:px-8 mt-20">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="w-full h-[500px] rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-[#F9F9F9] dark:border-gray-800 relative group"
         >
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13437.476483485073!2d35.1610486!3d32.9619572!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151e3678732e4e11%3A0xe54d46cfc8b184ef!2sAbu%20Snan!5e0!3m2!1sen!2sil!4v1714717630000!5m2!1sen!2sil" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3359.369!2d35.1664!3d32.9602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU3JzQwLjciTiAzNcKwMDknNTkuMCJF!5e0!3m2!1sen!2sil!4v1700000000000!5m2!1sen!2sil"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            title="Clinic Location"
+            title="Eyad Abu Aqel Physiotherapy Clinic Location"
             className="grayscale invert dark:invert-0 hover:grayscale-0 transition-all duration-1000 ease-in-out"
           ></iframe>
-          
+
           <div className={`absolute top-8 ${t.dir === 'rtl' ? 'right-8' : 'left-8'} pointer-events-none`}>
             <div className={`bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl p-6 rounded-[2rem] shadow-2xl border border-white/50 dark:border-white/10 max-w-[280px] ${t.dir === 'rtl' ? 'text-right' : 'text-left'}`}>
                <div className="flex items-center gap-3 mb-3">
@@ -225,6 +314,20 @@ export const Contact = ({ t }: { t: any }) => {
                   <p className="text-[10px] text-gray-400 dark:text-gray-500 font-bold uppercase tracking-widest">{t.name}</p>
                </div>
             </div>
+          </div>
+
+          <div className={`absolute bottom-8 ${t.dir === 'rtl' ? 'left-8' : 'right-8'}`}>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href="https://www.google.com/maps/dir/?api=1&destination=32.9602,35.1664"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pointer-events-auto flex items-center gap-3 bg-[#1E4D92] dark:bg-[#4B9CD3] text-white dark:text-gray-900 px-8 py-4 rounded-full font-bold shadow-2xl hover:bg-[#1A1A1A] dark:hover:bg-white transition-all"
+            >
+              <MapPin size={20} />
+              <span>{t.dir === 'rtl' ? 'ניווט למקום' : 'Get Directions'}</span>
+            </motion.a>
           </div>
         </motion.div>
       </div>

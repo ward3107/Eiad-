@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(start *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npx tsc *)",
+      "Bash(where.exe cwebp *)",
+      "Bash(ffmpeg -version)",
+      "Bash(vercel login *)",
+      "Bash(vercel whoami *)",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel --prod --yes --name \"eyad-physiotherapy\")",
+      "Bash(vercel --prod)",
+      "Bash(npm audit *)",
+      "Bash(curl -sI https://eyad-physiotherapy.vercel.app)"
+    ]
+  }
+}

@@ -23,12 +23,12 @@ export const CTABar = ({ t }: { t: any }) => {
           <h2 className="text-4xl md:text-5xl text-white font-serif mb-4 font-light leading-tight">{t.ctaBar.title}</h2>
           <p className="text-white/70 text-xl font-medium max-w-xl">{t.ctaBar.desc}</p>
         </motion.div>
-        <motion.a 
+        <motion.a
           whileHover={{ scale: 1.05, y: -5 }}
           whileTap={{ scale: 0.95 }}
-          href="https://wa.me/972521234567" 
-          target="_blank" 
-          rel="no-referrer"
+          href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+          target="_blank"
+          rel="noopener noreferrer"
           className="group bg-white text-[#1E4D92] px-12 py-6 rounded-full font-bold text-xl flex items-center gap-4 hover:shadow-[0_20px_50px_rgba(255,255,255,0.2)] transition-all"
         >
           <MessageCircle className="text-[#25D366]" fill="#25D366" size={28} />

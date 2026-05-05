@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2, ChevronRight, Star } from 'lucide-react';
+import { CheckCircle2, ChevronRight, Star, MessageCircle } from 'lucide-react';
 
 export const Hero = ({ t }: { t: any }) => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -100,16 +100,17 @@ export const Hero = ({ t }: { t: any }) => {
             {t.hero.desc}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
-            <a 
-              href="#contact" 
-              onClick={(e) => scrollToSection(e, '#contact')}
-              className="bg-[#1E4D92] dark:bg-[#4B9CD3] text-white dark:text-gray-900 px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#1E4D92]/30 dark:hover:shadow-[#4B9CD3]/30 transition-all flex items-center justify-center gap-2 group"
+            <a
+              href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#25D366]/30 transition-all flex items-center justify-center gap-2 group"
             >
               {t.hero.cta1}
-              {t.dir === 'rtl' ? <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" /> : <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform rotate-180" />}
+              <MessageCircle size={20} className="group-hover:scale-110 transition-transform" />
             </a>
-            <a 
-              href="#services" 
+            <a
+              href="#services"
               onClick={(e) => scrollToSection(e, '#services')}
               className="bg-white dark:bg-gray-700 text-[#1A1A1A] dark:text-white border-2 border-[#1A1A1A]/10 dark:border-white/10 px-10 py-5 rounded-full font-bold text-lg hover:bg-gray-50 dark:hover:bg-gray-600 transition-all flex items-center justify-center gap-2"
             >
@@ -141,10 +142,14 @@ export const Hero = ({ t }: { t: any }) => {
            className={`relative ${t.dir === 'rtl' ? '' : 'lg:col-start-1'}`}
         >
           <div className="relative rounded-[2rem] overflow-hidden shadow-2xl z-10 aspect-[4/5] md:aspect-square">
-            <img 
-              src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1000" 
-              alt={t.name} 
-              className="w-full h-full object-cover"
+            <img
+              src="/logo.png"
+              alt={t.name}
+              className="w-full h-full object-contain bg-white dark:bg-gray-800 p-8"
+              loading="eager"
+              fetchPriority="high"
+              width="800"
+              height="800"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
             <div className={`absolute bottom-8 text-white ${t.dir === 'rtl' ? 'right-8' : 'left-8'}`}>

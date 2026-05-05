@@ -1,9 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Hebrew (Default) -->
   <url>
-    <loc>https://ais-dev-stbqm2hhvoekh767n7dalz-562045622210.europe-west2.run.app/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://eyad-physiotherapy.com</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="he" href="https://eyad-physiotherapy.com"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eyad-physiotherapy.com/en"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://eyad-physiotherapy.com/ru"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://eyad-physiotherapy.com/ar"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://eyad-physiotherapy.com/el"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://eyad-physiotherapy.com"/>
   </url>
+
+  <!-- English -->
+  <url>
+    <loc>https://eyad-physiotherapy.com/en</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Russian -->
+  <url>
+    <loc>https://eyad-physiotherapy.com/ru</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Arabic -->
+  <url>
+    <loc>https://eyad-physiotherapy.com/ar</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Greek -->
+  <url>
+    <loc>https://eyad-physiotherapy.com/el</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>

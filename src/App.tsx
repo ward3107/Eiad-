@@ -16,9 +16,27 @@ import { CookieBanner } from './components/CookieBanner';
 import { LegalModal } from './components/LegalModal';
 import { BackToTop } from './components/BackToTop';
 import { SEO } from './components/SEO';
+import { WhatsAppWidget } from './components/WhatsAppWidget';
+import { SocialProof } from './components/SocialProof';
+import { Blog } from './components/Blog';
+import { Analytics } from './components/Analytics';
+import { CSPReporter } from './components/CSPReporter';
+import { analytics } from './components/Analytics';
 
 export default function App() {
   const [lang, setLang] = useState<'he' | 'en' | 'ru' | 'ar' | 'el'>('he');
+
+  // Track language changes
+  const handleLanguageChange = (newLang: 'he' | 'en' | 'ru' | 'ar' | 'el') => {
+    setLang(newLang);
+    analytics.trackLanguageChange(newLang);
+  };
+
+  // Track theme changes
+  const handleThemeChange = (isDark: boolean) => {
+    setDarkMode(isDark);
+    analytics.trackThemeToggle(isDark ? 'dark' : 'light');
+  };
   const [darkMode, setDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
@@ -41,13 +59,16 @@ export default function App() {
       localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
+  // Note: Theme tracking is now handled in handleThemeChange to avoid double tracking
 
   const currentTranslations = (translations as any)[lang];
 
   return (
     <div className={`min-h-screen transition-colors duration-500 bg-[#FDFCFB] dark:bg-gray-900 ${darkMode ? 'dark' : ''} font-sans selection:bg-[#1E4D92] selection:text-white overflow-x-hidden`}>
+      <Analytics />
+      <CSPReporter />
       <SEO t={currentTranslations} lang={lang} />
-      <Navbar t={currentTranslations} lang={lang} setLang={setLang} darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Navbar t={currentTranslations} lang={lang} setLang={handleLanguageChange} darkMode={darkMode} setDarkMode={handleThemeChange} />
       <Hero t={currentTranslations} />
       <Services t={currentTranslations} lang={lang} />
       <Portfolio t={currentTranslations} lang={lang} />
@@ -55,19 +76,30 @@ export default function App() {
       <About t={currentTranslations} />
       <Gallery t={currentTranslations} />
       <Testimonials t={currentTranslations} />
+      <SocialProof t={currentTranslations} />
+      <Blog t={currentTranslations} lang={lang} />
       <CTABar t={currentTranslations} />
       <Contact t={currentTranslations} />
       <Footer t={currentTranslations} setLegalModal={setLegalModal} />
 
       <AccessibilityWidget />
       <CookieBanner lang={lang} onShowPrivacy={() => setLegalModal({ isOpen: true, type: 'privacy' })} />
-      <LegalModal 
-        isOpen={legalModal.isOpen} 
-        onClose={() => setLegalModal(prev => ({ ...prev, isOpen: false }))} 
-        type={legalModal.type} 
-        lang={lang} 
+      <LegalModal
+        isOpen={legalModal.isOpen}
+        onClose={() => setLegalModal(prev => ({ ...prev, isOpen: false }))}
+        type={legalModal.type}
+        lang={lang}
       />
       <BackToTop />
+      <WhatsAppWidget
+        phoneNumber={currentTranslations.whatsapp?.phone || '0502834280'}
+        message={currentTranslations.whatsapp?.bookingMessage || 'Hi, I would like to book an appointment'}
+        dir={currentTranslations.dir as 'rtl' | 'ltr'}
+        t={{
+          chatBubble: currentTranslations.whatsapp?.chatBubble || 'Chat with us!',
+          close: currentTranslations.whatsapp?.close || 'Close'
+        }}
+      />
     </div>
   );
 }

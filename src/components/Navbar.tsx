@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, MessageCircle } from 'lucide-react';
 import { ClinicLogo } from './Shared';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -26,6 +26,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
     { name: t.nav.about, href: '#about' },
     { name: t.nav.gallery, href: '#gallery' },
     { name: t.nav.testimonials, href: '#testimonials' },
+    { name: t.nav.blog || 'Blog', href: '#blog' },
     { name: t.faq.tag, href: '#faq' },
     { name: t.nav.contact, href: '#contact' },
   ];
@@ -84,11 +85,13 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
               {darkMode ? <Moon size={20} /> : <Sun size={20} />}
             </button>
             <LanguageSwitcher currentLang={lang} setLang={setLang} />
-            <a 
-              href="#contact" 
-              onClick={(e) => scrollToSection(e, '#contact')}
-              className="bg-[#1E4D92] text-white px-6 py-2.5 rounded-full font-medium hover:bg-[#143264] transition-all transform hover:scale-105 shadow-lg shadow-[#1E4D92]/20"
+            <a
+              href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
             >
+              <MessageCircle size={18} />
               {t.nav.booking}
             </a>
           </div>
@@ -143,15 +146,17 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
                   {link.name}
                 </motion.a>
               ))}
-              <motion.a 
+              <motion.a
                 variants={{
                   open: { opacity: 1, scale: 1 },
                   closed: { opacity: 0, scale: 0.9 }
                 }}
-                href="#contact" 
-                onClick={(e) => scrollToSection(e, '#contact')}
-                className="mt-4 bg-[#1E4D92] text-white px-8 py-4 rounded-full font-bold text-lg block mx-auto w-full max-w-[280px] shadow-lg shadow-[#1E4D92]/20"
+                href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-full font-bold text-lg block mx-auto w-full max-w-[280px] shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"
               >
+                <MessageCircle size={20} />
                 {t.nav.booking}
               </motion.a>
             </div>

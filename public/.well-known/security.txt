@@ -1,0 +1,37 @@
+# Security Policy for Eyad Abu Aqel Physiotherapy Website
+# Contact: security@eyad-physiotherapy.com
+# Last Updated: 2026-05-05
+
+# Preferred Languages
+Preferred-Languages: he, en, ar, ru, el
+
+# Security Contact Information
+Contact: mailto:physio.eiad@gmail.com
+
+# Security Policy URL
+Policy: https://eyad-physiotherapy.com/privacy
+
+# Encryption Key for Security Reports
+Encryption: https://eyad-physiotherapy.com/pgp-key
+
+# Acknowledgments
+Acknowledgments: https://eyad-physiotherapy.com/security-acknowledgments
+
+# Deployment Status (ISO 8601)
+# This site is actively maintained and security patches are applied within 48 hours
+Canonical: https://eyad-physiotherapy.com
+# Deployment: 2026-05-05T10:00:00Z
+
+# Hiring - Not applicable for this site
+# Hiring: https://eyad-physiotherapy.com/jobs
+
+# Disclosure Policy - Full Disclosure within 90 days
+# We follow responsible disclosure practices
+
+# Security Scope
+# - The main website at eyad-physiotherapy.com
+# - All subdomains
+#
+# Out of Scope:
+# - Third-party services (WhatsApp, Google Maps, Google Analytics)
+# - Any physical security concerns

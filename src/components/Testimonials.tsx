@@ -161,18 +161,18 @@ export const Testimonials = ({ t }: { t: any }) => {
                               exit={{ opacity: 0, y: 10, scale: 0.95 }}
                               className="absolute top-full mt-3 right-0 bg-white dark:bg-gray-700 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-600 p-2 min-w-[160px] z-20 flex flex-col gap-1"
                             >
-                              <a 
-                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(`"${currentReview.text}" - ${currentReview.name}`)}`} 
-                                target="_blank" rel="noreferrer" 
+                              <a
+                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encodeURIComponent(`"${currentReview.text}" - ${currentReview.name}`)}`}
+                                target="_blank" rel="noopener noreferrer"
                                 onClick={() => setShowShare(false)}
                                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-[#1877F2]"
                               >
                                 <Facebook size={18} fill="currentColor" />
                                 <span className="text-sm font-bold">Facebook</span>
                               </a>
-                              <a 
-                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${currentReview.text}" - ${currentReview.name}`)}`} 
-                                target="_blank" rel="noreferrer" 
+                              <a
+                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${currentReview.text}" - ${currentReview.name}`)}`}
+                                target="_blank" rel="noopener noreferrer"
                                 onClick={() => setShowShare(false)}
                                 className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors text-[#1DA1F2]"
                               >
