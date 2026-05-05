@@ -106,7 +106,7 @@ export const AccessibilityWidget = () => {
   ];
 
   return (
-    <div className="fixed bottom-24 right-8 z-[70] group">
+    <div className="fixed bottom-16 sm:bottom-24 right-4 sm:right-8 z-[70] group">
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -114,30 +114,30 @@ export const AccessibilityWidget = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
             onClick={hideWidget}
-            className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-[71]"
+            className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg opacity-0 group-hover:opacity-100 transition-opacity z-[71]"
             aria-label="Hide accessibility widget"
           >
-            <X size={12} />
+            <X size={10} className="sm:w-3 sm:h-3" />
           </motion.button>
         )}
       </AnimatePresence>
 
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-[#1A1A1A] dark:bg-white text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative focus:outline-none focus:ring-2 focus:ring-[#1E4D92]/50"
+        className="w-11 h-11 sm:w-14 sm:h-14 bg-[#1A1A1A] dark:bg-white text-white dark:text-gray-900 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform relative focus:outline-none focus:ring-2 focus:ring-[#1E4D92]/50"
         aria-label="Accessibility Menu"
         aria-expanded={isOpen}
       >
-        <ShieldCheck size={28} />
+        <ShieldCheck size={22} className="sm:w-7 sm:h-7" />
       </button>
 
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-16 right-0 w-80 bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10 p-6 overflow-y-auto max-h-[70vh] transition-colors"
+            className="absolute bottom-14 sm:bottom-16 right-0 w-[calc(100vw-2rem)] sm:w-80 bg-white dark:bg-gray-800 rounded-2xl sm:rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10 p-4 sm:p-6 overflow-y-auto max-h-[70vh] transition-colors"
             dir="rtl"
             role="dialog"
             aria-label="Accessibility Options"

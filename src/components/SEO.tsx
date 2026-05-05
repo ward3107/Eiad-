@@ -5,8 +5,8 @@ interface SEOProps {
   lang: 'he' | 'en' | 'ru' | 'ar' | 'el';
 }
 
-const SITE_URL = 'https://eyad-physiotherapy.com'; // Replace with actual domain
-const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&q=80&w=1200';
+const SITE_URL = 'https://eyad-physiotherapy.vercel.app'; // Vercel deployment URL
+const DEFAULT_IMAGE = 'https://eyad-physiotherapy.vercel.app/logo.png'; // Logo for social sharing
 
 export const SEO = ({ t, lang }: SEOProps) => {
   useEffect(() => {
