@@ -17,6 +17,7 @@ import { LegalModal } from './components/LegalModal';
 import { BackToTop } from './components/BackToTop';
 import { SEO } from './components/SEO';
 import { WhatsAppWidget } from './components/WhatsAppWidget';
+import { ShareWidget } from './components/ShareWidget';
 import { SocialProof } from './components/SocialProof';
 import { Blog } from './components/Blog';
 import { Analytics } from './components/Analytics';
@@ -91,6 +92,7 @@ export default function App() {
         lang={lang}
       />
       <BackToTop />
+      <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} />
       <WhatsAppWidget
         phoneNumber={currentTranslations.whatsapp?.phone || '0502834280'}
         message={currentTranslations.whatsapp?.bookingMessage || 'Hi, I would like to book an appointment'}
