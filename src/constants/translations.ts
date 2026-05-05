@@ -238,6 +238,108 @@ export const translations = {
             'החזרה לספורט דורשת תכנון קפדני. בדיקות פונקציונליות, בדיקות כוח ואימונים ספציפיים לסוג הספורט - כל אלה חלק מהתהליך.',
             'בממוצע, שחקני כדורגל חוזרים למגרש תוך 6-9 חודשים. אבל האיכות חשובה יותר מהמהירות - חזרה מוקדמת מעלה את הסיכון לפציעה חוזרת.'
           ]
+        },
+        {
+          id: 'post4',
+          title: 'תרגילי חימום לפני אימון - מדריך מלא',
+          excerpt: 'חימום נכון לפני אימון הוא הכרחי למניעת פציעות ושיפור הביצוע. במאמר זה נציג את תרגילי החימום הטובים ביותר.',
+          categories: ['הדרכה'],
+          date: '1 באפריל 2026',
+          readTime: '4 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['חימום', 'מתיחות', 'אימון', 'מניעה'],
+          image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'התחממות היא שלב קריטי שאסור לפספס. היא מכינה את הגוף למאמץ, מגבירה את זרימת הדם, ומפחיתה את הסיכון לפציעה.',
+            'התחל עם 5 דקות של פעילות אירובית קלה - הליכה מהירה, ריצה קלה, או אופניים. זה מעלה את חום הגוף ואת דופק הלב.',
+            'המשך עם מתיחות דינמיות - תנועות חזרה מבוקרות שמכינות את השרירים והמפרקים לעומס. התמקד באזורים שיעבדו באימון.',
+            'סיים עם תרגילים ספציפיים לסוג האימון - לריצה: קפיצות קלות, להרמת משקולות: הרמות קלות עם מוט.'
+          ]
+        },
+        {
+          id: 'post5',
+          title: 'פציעות רצועות בספורט - אבחון וטיפול',
+          excerpt: 'פציעות רצועות הן שכיחות בספורט. טיפול נכון ושיקום מקצועי יכולים להחזיר אתכם לפעילות מלאה.',
+          categories: ['ספורט', 'טיפול'],
+          date: '28 במרס 2026',
+          readTime: '6 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['רצועות', 'קריעת רצוע', 'שיקום', 'ספורט'],
+          image: 'https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'רצועות מחברים בין עצמות ומייצבים את המפרקים. פציעת רצועה יכולה להיות מתיחה קלה עד קריעה מלאה.',
+            'סימנים לפציעת רצוע: קול "פופ", כאב חד, נפיחות מהירה, חולשה באזור, וקושי בתנועה.',
+            'הטיפול תלוי בחומרת הפציעה: מתיחות קלות עבור מתיחות, טיפול שמרכי עבור קריעות חלקיות, וניתוח עבור קריעות מלאות.',
+            'השיקום כולל חיזוק מתקדם, שיפור טווח תנועה, וחזרה הדרגתית לפעילות.'
+          ]
+        },
+        {
+          id: 'post6',
+          title: 'כאב גב תחתון - גורמים ופתרונות',
+          excerpt: 'כאב בגב התחתון יכול להשפיע על איכות החיים. הבנת הגורמים והטיפול הנכון יכולים להביא להקלה.',
+          categories: ['גב'],
+          date: '20 במרס 2026',
+          readTime: '5 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['גב תחתון', 'עמידה יתר', 'פריצת דיסק', 'טיפול'],
+          image: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'כאב גב תחתון יכול לנבוע מעמידה ממושכת, השמנת יתר, חולשה בשרירי הליבה, או פציעה.',
+            'תסמינים כוללים כאב מקומי או מורגש, נוקשות בוקר, כאב בעמידה ממושכת, וכאב בהליכה.',
+            'טיפול יכול לכלול טיפול ידני, תרגילי חיזוק, חימום, ושינויי הרגלי ישיבה ועמידה.',
+            'במקרים קשים יותר עשוי להידרש טיפולים מתקדמים כמו גירוד או טיפול תרופתי.'
+          ]
+        },
+        {
+          id: 'post7',
+          title: 'טיפול ידני - מה לצפות מהטיפול',
+          excerpt: 'טיפול ידני הוא גישה יעילה לטיפול בכאב ושיפור התפקוד. הבינו את הטיפול ואת היתרונות שלו.',
+          categories: ['טיפול'],
+          date: '15 במרס 2026',
+          readTime: '4 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['טיפול ידני', 'עיסוי', 'שחרור שרירים', 'כאב'],
+          image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'טיפול ידני כולל מגוון טכניקות שמטרתן שיפור התפקוד והפחתת כאב באמצעות מגע ידני.',
+            'טכניקות כוללות: עיסוי רקמות, שחרור שרירים, פעילות מפרקית, ומתיחות.',
+            'הטיפול מותאם אישית לכל מטופל לפי הצרכים והמצב הספציפי שלו.',
+            'היתרונות כוללות: הפחתת כאב, שיפור טווח תנועה, הרפיה שרירים, ושיפור זרימת הדם.'
+          ]
+        },
+        {
+          id: 'post8',
+          title: 'שיקום לאחר פציעת ספורט - שלבי ההחלמה',
+          excerpt: 'החלמה מפציעת ספורט דורשת תכנון קפדני וסבלנות. הבינו את השלבים ומה לצפות.',
+          categories: ['שיקום', 'ספורט'],
+          date: '10 במרס 2026',
+          readTime: '6 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['שיקום', 'פציעת ספורט', 'החלמה', 'חזרה לספורט'],
+          image: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'השלב הראשון: הפחתת כאב ודלקת. מנוחה, קרח, דחיסה, וטיפול ידני עדין.',
+            'השלב השני: החזרת טווח תנועה. תרגילי גמישות וחיזוק קלים.',
+            'השלב השלישי: חיזוק ותפקוד. תרגילי חיזוק מתקדמים ואימונים פונקציונליים.',
+            'השלב הרביעי: חזרה לספורט. אימונים ספציפיים לסוג הספורט ולעמדת המשחק.'
+          ]
+        },
+        {
+          id: 'post9',
+          title: 'המדריך המלא לניתוח פציעות ספורט',
+          excerpt: 'ניתוח פציעת ספורט הוא המוצא האחרון. הבינו מתי נדרש ניתוח ומה צפוי אחריו.',
+          categories: ['ניתוח', 'ספורט'],
+          date: '5 במרס 2026',
+          readTime: '7 דקות קריאה',
+          author: 'איאד אבו עקל',
+          tags: ['ניתוח', 'פציעת ספורט', 'החלמה', 'שיקום'],
+          image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'ניתוח נדרש במקרים של קריעת רצועה מלאה, קרע במניסקוס, שבר בעצם, או כאשר הטיפול השמרכי לא מביא תוצאות.',
+            'לפני הניתוח תבוצע בדיקה מקיפה הכוללת תמונות (MRI/CT), בדיקות פונקציונליות, והערכת תפקוד.',
+            'הניתוח מבוצע על ידי מנתח ספורט מומחה שמתמחה בפציעות ספורט.',
+            'לאחר הניתוח מתחיל תהליך השיקום שיכול לארוח בין חודשיים לשנה, תלוי בסוג הפציעה והמורכבות.'
+          ]
         }
       ]
     }
@@ -479,6 +581,108 @@ export const translations = {
             'After about a month, active rehabilitation begins. Progressive strengthening, stability improvement, and return to normal activities. Each patient progresses at their own pace based on their abilities.',
             'Return to sport requires careful planning. Functional tests, strength assessments, and sport-specific drills are all part of the process.',
             'On average, soccer players return to the pitch within 6-9 months. But quality matters more than speed - early return increases the risk of re-injury.'
+          ]
+        },
+        {
+          id: 'post4',
+          title: 'Warm-Up Exercises Before Training - Complete Guide',
+          excerpt: 'Proper warm-up before training is essential for injury prevention and performance improvement. In this article, we present the best warm-up exercises.',
+          categories: ['Education'],
+          date: 'April 1, 2026',
+          readTime: '4 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['warm-up', 'stretching', 'training', 'prevention'],
+          image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Warm-up is a critical stage that should not be skipped. It prepares the body for exertion, increases blood flow, and reduces the risk of injury.',
+            'Start with 5 minutes of light aerobic activity - brisk walking, light jogging, or cycling. This raises body temperature and heart rate.',
+            'Continue with dynamic stretches - controlled back-and-forth movements that prepare muscles and joints for load. Focus on areas that will be worked during training.',
+            'Finish with sport-specific exercises - for running: light jumps, for weightlifting: light barbell lifts.'
+          ]
+        },
+        {
+          id: 'post5',
+          title: 'Ligament Injuries in Sports - Diagnosis and Treatment',
+          excerpt: 'Ligament injuries are common in sports. Proper treatment and professional rehabilitation can get you back to full activity.',
+          categories: ['Sports', 'Treatment'],
+          date: 'March 28, 2026',
+          readTime: '6 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['ligaments', 'ligament tear', 'rehabilitation', 'sports'],
+          image: 'https://images.unsplash.com/photo-1559526323-cb2f2fe2591b?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Ligaments connect bones and stabilize joints. A ligament injury can range from a mild stretch to a complete tear.',
+            'Signs of ligament injury: a "pop" sound, sharp pain, rapid swelling, weakness in the area, and difficulty moving.',
+            'Treatment depends on severity: gentle stretches for mild sprains, manual therapy for partial tears, and surgery for complete tears.',
+            'Rehabilitation includes progressive strengthening, range of motion improvement, and gradual return to activity.'
+          ]
+        },
+        {
+          id: 'post6',
+          title: 'Lower Back Pain - Causes and Solutions',
+          excerpt: 'Lower back pain can affect quality of life. Understanding the causes and proper treatment can bring relief.',
+          categories: ['Back'],
+          date: 'March 20, 2026',
+          readTime: '5 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['lower back', 'prolonged standing', 'herniated disc', 'treatment'],
+          image: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Lower back pain can result from prolonged standing, excess weight, weak core muscles, or injury.',
+            'Symptoms include localized or radiating pain, morning stiffness, pain during prolonged standing, and pain while walking.',
+            'Treatment may include manual therapy, strengthening exercises, heat therapy, and changes in sitting and standing habits.',
+            'In more complex cases, advanced treatments such as traction or therapeutic injections may be required.'
+          ]
+        },
+        {
+          id: 'post7',
+          title: 'Manual Therapy - What to Expect from Treatment',
+          excerpt: 'Manual therapy is an effective approach for pain relief and function improvement. Understand the treatment and its benefits.',
+          categories: ['Treatment'],
+          date: 'March 15, 2026',
+          readTime: '4 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['manual therapy', 'massage', 'muscle release', 'pain'],
+          image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Manual therapy includes various techniques aimed at improving function and reducing pain through manual touch.',
+            'Techniques include: soft tissue massage, muscle release, joint mobilization, and stretching.',
+            'Treatment is individually tailored to each patient according to their needs and specific condition.',
+            'Benefits include: pain reduction, improved range of motion, muscle relaxation, and improved blood flow.'
+          ]
+        },
+        {
+          id: 'post8',
+          title: 'Rehabilitation After Sports Injury - Recovery Stages',
+          excerpt: 'Recovering from a sports injury requires careful planning and patience. Understand the stages and what to expect.',
+          categories: ['Rehab', 'Sports'],
+          date: 'March 10, 2026',
+          readTime: '6 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['rehabilitation', 'sports injury', 'recovery', 'return to sport'],
+          image: 'https://images.unsplash.com/photo-1519824145371-296894a0daa9?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Stage one: Pain and inflammation reduction. Rest, ice, compression, and gentle manual therapy.',
+            'Stage two: Restoring range of motion. Flexibility and light strengthening exercises.',
+            'Stage three: Strengthening and function. Progressive strengthening and functional training.',
+            'Stage four: Return to sport. Sport-specific drills and return to play position.'
+          ]
+        },
+        {
+          id: 'post9',
+          title: 'Complete Guide to Sports Injury Surgery',
+          excerpt: 'Sports injury surgery is the last resort. Understand when surgery is needed and what to expect after.',
+          categories: ['Surgery', 'Sports'],
+          date: 'March 5, 2026',
+          readTime: '7 min read',
+          author: 'Eyad Abu Aqel',
+          tags: ['surgery', 'sports injury', 'recovery', 'rehabilitation'],
+          image: 'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800',
+          content: [
+            'Surgery is required for complete ligament tears, meniscus tears, bone fractures, or when conservative treatment fails to bring results.',
+            'Before surgery, a comprehensive evaluation is performed including imaging (MRI/CT), functional tests, and performance assessment.',
+            'Surgery is performed by a sports medicine surgeon specializing in sports injuries.',
+            'After surgery, the rehabilitation process begins which can last between two months to a year, depending on the type and complexity of the injury.'
           ]
         }
       ]
