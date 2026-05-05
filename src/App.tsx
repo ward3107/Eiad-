@@ -40,7 +40,6 @@ const HomePage = ({ t, lang, setLang, darkMode, setDarkMode, setLegalModal }: an
     <Contact t={t} />
     <Footer t={t} setLegalModal={setLegalModal} />
     <BackToTop />
-    <ShareWidget dir={t.dir as 'rtl' | 'ltr'} t={{ instagram: t.instagram }} />
   </>
 );
 

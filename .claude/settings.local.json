@@ -23,7 +23,8 @@
       "Bash(findstr \"node\")",
       "Bash(netstat -ano)",
       "Bash(findstr \":5173\")",
-      "Bash(npx vercel *)"
+      "Bash(npx vercel *)",
+      "Bash(git commit *)"
     ]
   }
 }
