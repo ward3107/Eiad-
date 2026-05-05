@@ -31,7 +31,7 @@ export const Testimonials = ({ t }: { t: any }) => {
 
   useEffect(() => {
     if (isAutoPlaying && !isLoading) {
-      autoPlayRef.current = setInterval(nextTestimonial, 5000);
+      autoPlayRef.current = setInterval(nextTestimonial, 3000);
     }
     return () => {
       if (autoPlayRef.current) clearInterval(autoPlayRef.current);
@@ -117,9 +117,9 @@ export const Testimonials = ({ t }: { t: any }) => {
                   animate="center"
                   exit="exit"
                   transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.4 },
-                    scale: { duration: 0.4 }
+                    x: { type: "spring", stiffness: 500, damping: 28 },
+                    opacity: { duration: 0.25 },
+                    scale: { duration: 0.25 }
                   }}
                   drag="x"
                   dragConstraints={{ left: 0, right: 0 }}
