@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Share2, X, Link2, Facebook, Twitter, Mail } from 'lucide-react';
+import { Share2, X, Link2, Facebook, Instagram, Mail } from 'lucide-react';
 import { MessageCircle } from 'lucide-react';
 
 interface ShareWidgetProps {
@@ -36,11 +36,11 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
       textColor: 'text-white'
     },
     {
-      name: 'Twitter',
-      icon: Twitter,
-      href: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`,
-      color: 'bg-black dark:bg-white hover:bg-gray-800 dark:hover:bg-gray-200',
-      textColor: 'text-white dark:text-black'
+      name: 'Instagram',
+      icon: Instagram,
+      action: () => copyForInstagram(),
+      color: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 hover:from-purple-600 hover:via-pink-600 hover:to-orange-500',
+      textColor: 'text-white'
     },
     {
       name: 'Copy Link',
@@ -60,6 +60,23 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = shareUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const copyForInstagram = async () => {
+    try {
+      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      const textArea = document.createElement('textarea');
+      textArea.value = `${shareText}\n${shareUrl}`;
       document.body.appendChild(textArea);
       textArea.select();
       document.execCommand('copy');
@@ -110,8 +127,8 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
             {shareOptions.map((option, index) => {
               const Icon = option.icon;
 
-              // Copy Link button (action)
-              if (option.name === 'Copy Link') {
+              // Copy Link and Instagram buttons (actions)
+              if (option.name === 'Copy Link' || option.name === 'Instagram') {
                 return copied ? (
                   <motion.div
                     key="copy-check"

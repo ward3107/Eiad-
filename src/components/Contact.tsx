@@ -287,18 +287,18 @@ export const Contact = ({ t }: { t: any }) => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="w-full h-[500px] rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-[#F9F9F9] dark:border-gray-800 relative group"
+          className="w-full h-[350px] sm:h-[400px] md:h-[500px] rounded-[1.5rem] sm:rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-[#F9F9F9] dark:border-gray-800 relative group touch-manipulation"
         >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3359.369!2d35.1664!3d32.9602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDU3JzQwLjciTiAzNcKwMDknNTkuMCJF!5e0!3m2!1sen!2sil!4v1700000000000!5m2!1sen!2sil"
             width="100%"
             height="100%"
-            style={{ border: 0 }}
+            style={{ border: 0, pointerEvents: 'auto' }}
             allowFullScreen={true}
-            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Eyad Abu Aqel Physiotherapy Clinic Location"
             className="grayscale invert dark:invert-0 hover:grayscale-0 transition-all duration-1000 ease-in-out"
+            scrolling="no"
           ></iframe>
 
           <div className={`absolute top-8 ${t.dir === 'rtl' ? 'right-8' : 'left-8'} pointer-events-none`}>
