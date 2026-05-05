@@ -16,7 +16,6 @@ import { CookieBanner } from './components/CookieBanner';
 import { LegalModal } from './components/LegalModal';
 import { BackToTop } from './components/BackToTop';
 import { SEO } from './components/SEO';
-import { WhatsAppWidget } from './components/WhatsAppWidget';
 import { ShareWidget } from './components/ShareWidget';
 import { SocialProof } from './components/SocialProof';
 import { Blog } from './components/Blog';
@@ -93,15 +92,6 @@ export default function App() {
       />
       <BackToTop />
       <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} t={{ instagram: currentTranslations.instagram }} />
-      <WhatsAppWidget
-        phoneNumber={currentTranslations.whatsapp?.phone || '0502834280'}
-        message={currentTranslations.whatsapp?.bookingMessage || 'Hi, I would like to book an appointment'}
-        dir={currentTranslations.dir as 'rtl' | 'ltr'}
-        t={{
-          chatBubble: currentTranslations.whatsapp?.chatBubble || 'Chat with us!',
-          close: currentTranslations.whatsapp?.close || 'Close'
-        }}
-      />
-    </div>
+          </div>
   );
 }
