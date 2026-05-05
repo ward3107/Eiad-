@@ -35,13 +35,6 @@ export const WhatsAppWidget = ({
       aria-label="WhatsApp chat"
     >
       <MessageCircle size={28} strokeWidth={2.5} className="sm:w-8 sm:h-8" />
-
-      {/* Pulse animation */}
-      <motion.span
-        className="absolute inset-0 rounded-full bg-green-400"
-        animate={{ scale: [1, 1.5, 1], opacity: [0.7, 0, 0.7] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      />
     </motion.button>
   );
 };
