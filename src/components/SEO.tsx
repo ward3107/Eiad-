@@ -6,7 +6,7 @@ interface SEOProps {
 }
 
 const SITE_URL = 'https://eyad-physiotherapy.vercel.app'; // Vercel deployment URL
-const DEFAULT_IMAGE = 'https://eyad-physiotherapy.vercel.app/logo.png'; // Logo for social sharing
+const DEFAULT_IMAGE = 'https://eyad-physiotherapy.vercel.app/hero-image.jpg'; // Hero image for social sharing
 
 export const SEO = ({ t, lang }: SEOProps) => {
   useEffect(() => {
