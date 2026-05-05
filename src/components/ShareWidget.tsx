@@ -129,25 +129,30 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
 
               // Copy Link and Instagram buttons (actions)
               if (option.name === 'Copy Link' || option.name === 'Instagram') {
+                const checkKey = option.name === 'Instagram' ? 'insta-check' : 'copy-check';
+                const buttonKey = option.name === 'Instagram' ? 'instagram-btn' : 'copy-link-btn';
+                const handleClick = option.name === 'Instagram' ? copyForInstagram : copyToClipboard;
+
                 return copied ? (
                   <motion.div
-                    key="copy-check"
+                    key={checkKey}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
+                    exit={{ scale: 0 }}
                     className="w-11 h-11 sm:w-12 sm:h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-xs sm:text-xs font-bold"
                   >
                     ✓
                   </motion.div>
                 ) : (
                   <motion.button
-                    key="copy-link"
+                    key={buttonKey}
                     initial={{ opacity: 0, x: -20, scale: 0 }}
                     animate={{ opacity: 1, x: 0, scale: 1 }}
                     exit={{ opacity: 0, x: -20, scale: 0 }}
                     transition={{ delay: index * 0.05, duration: 0.2 }}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
-                    onClick={() => copyToClipboard()}
+                    onClick={handleClick}
                     className={`w-11 h-11 sm:w-12 sm:h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
                     aria-label={option.name}
                   >
