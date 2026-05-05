@@ -342,6 +342,21 @@ export const translations = {
           ]
         }
       ]
+    },
+    accessibility: {
+      skipToMain: 'דלג לתוכן עיקרי',
+      menuOpen: 'תפריט נפתח',
+      menuClose: 'תפריט נסגר',
+      carousel: 'גלריית תמונות',
+      slide: 'תמונה',
+      of: 'מתוך',
+      faqAccordion: 'שאלות נפוצות אקורדיון',
+      expand: 'הרחב',
+      collapse: 'כווץ',
+      modal: 'חלון קופץ',
+      closeModal: 'סגור חלון',
+      langChanged: 'שפת הממשק שונתה',
+      themeChanged: 'ערכת נושא שונתה'
     }
   },
   en: {
@@ -686,6 +701,21 @@ export const translations = {
           ]
         }
       ]
+    },
+    accessibility: {
+      skipToMain: 'Skip to main content',
+      menuOpen: 'Menu opened',
+      menuClose: 'Menu closed',
+      carousel: 'Image gallery',
+      slide: 'Image',
+      of: 'of',
+      faqAccordion: 'Frequently asked questions accordion',
+      expand: 'Expand',
+      collapse: 'Collapse',
+      modal: 'Popup window',
+      closeModal: 'Close window',
+      langChanged: 'Interface language changed',
+      themeChanged: 'Theme changed'
     }
   },
   ru: {
@@ -1029,6 +1059,21 @@ export const translations = {
           ]
         }
       ]
+    },
+    accessibility: {
+      skipToMain: 'Перейти к основному содержимому',
+      menuOpen: 'Меню открыто',
+      menuClose: 'Меню закрыто',
+      carousel: 'Галерея изображений',
+      slide: 'Изображение',
+      of: 'из',
+      faqAccordion: 'Аккордеон часто задаваемых вопросов',
+      expand: 'Развернуть',
+      collapse: 'Свернуть',
+      modal: 'Всплывающее окно',
+      closeModal: 'Закрыть окно',
+      langChanged: 'Язык интерфейса изменен',
+      themeChanged: 'Тема изменена'
     }
   },
   ar: {
@@ -1372,6 +1417,21 @@ export const translations = {
           ]
         }
       ]
+    },
+    accessibility: {
+      skipToMain: 'انتقل إلى المحتوى الرئيسي',
+      menuOpen: 'القائمة مفتوحة',
+      menuClose: 'القائمة مغلقة',
+      carousel: 'معرض الصور',
+      slide: 'صورة',
+      of: 'من',
+      faqAccordion: 'أكورديون الأسئلة الشائعة',
+      expand: 'توسيع',
+      collapse: 'طي',
+      modal: 'نافذة منبثقة',
+      closeModal: 'إغلاق النافذة',
+      langChanged: 'تم تغيير لغة الواجهة',
+      themeChanged: 'تم تغيير السمة'
     }
   },
   el: {
@@ -1715,6 +1775,21 @@ export const translations = {
           ]
         }
       ]
+    },
+    accessibility: {
+      skipToMain: 'Μετάβαση στο κύριο περιεχόμενο',
+      menuOpen: 'Ανοιχτό μενού',
+      menuClose: 'Κλειστό μενού',
+      carousel: 'Συλλογή εικόνων',
+      slide: 'Εικόνα',
+      of: 'από',
+      faqAccordion: 'Ακορντεόν συχνών ερωτήσεων',
+      expand: 'Επέκταση',
+      collapse: 'Σύμπτυξη',
+      modal: 'Αναδυόμενο παράθυρο',
+      closeModal: 'Κλείσιμο παραθύρου',
+      langChanged: 'Άλλαξε η γλώσσα περιβάλλοντος',
+      themeChanged: 'Άλλαξε το θέμα'
     }
   }
 };

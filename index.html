@@ -42,6 +42,30 @@
 
     <!-- Structured Data Placeholder -->
     <script type="application/ld+json" id="local-business-schema"></script>
+
+    <!-- GTM Consent Mode v2 - MUST be before GTM loads -->
+    <script>
+      // Initialize dataLayer for GTM Consent Mode v2
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+
+      // Set all consent to DENIED by default (Amendment 13 compliant)
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 2000
+      });
+    </script>
+
+    <!-- Google Tag Manager - Replace GTM-XXXXXXX with your Container ID -->
+    <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': -->
+    <!-- new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], -->
+    <!-- j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= -->
+    <!-- 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); -->
+    <!-- })(window,document,'script','dataLayer','GTM-XXXXXXX');</script> -->
+    <!-- End Google Tag Manager -->
   </head>
   <body>
     <div id="root"></div>

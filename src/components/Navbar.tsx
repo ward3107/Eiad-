@@ -52,7 +52,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`} role="navigation" aria-label="Main navigation">
       <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center" dir={t.dir}>
         <div className="flex items-center gap-3">
           <div className="w-16 h-12 bg-white dark:bg-gray-800 rounded flex items-center justify-center p-1 transition-colors">
@@ -91,7 +91,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
             <button
               onClick={() => setDarkMode(!darkMode)}
               className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[#1A1A1A] dark:text-white"
-              aria-label="Toggle theme"
+              aria-label={t.accessibility?.themeChanged || 'Toggle theme'}
             >
               {darkMode ? <Moon size={20} /> : <Sun size={20} />}
             </button>
@@ -112,14 +112,15 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-[#1A1A1A] dark:text-white"
+            aria-label={t.accessibility?.themeChanged || 'Toggle theme'}
           >
             {darkMode ? <Moon size={24} /> : <Sun size={24} />}
           </button>
           <LanguageSwitcher currentLang={lang} setLang={setLang} />
-          <button 
-            className="p-2 text-[#1A1A1A] dark:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#1E4D92]/20 dark:focus:ring-[#4B9CD3]/20 rounded-lg" 
+          <button
+            className="p-2 text-[#1A1A1A] dark:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#1E4D92]/20 dark:focus:ring-[#4B9CD3]/20 rounded-lg"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-label={isMobileMenuOpen ? (t.accessibility?.menuClose || 'Close menu') : (t.accessibility?.menuOpen || 'Open menu')}
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
           >

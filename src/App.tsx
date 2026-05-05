@@ -13,7 +13,7 @@ import { CTABar } from './components/CTABar';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { AccessibilityWidget } from './components/AccessibilityWidget';
-import { CookieBanner } from './components/CookieBanner';
+import { CookieBanner, initGTMConsentMode } from './components/CookieBanner';
 import { LegalModal } from './components/LegalModal';
 import { BackToTop } from './components/BackToTop';
 import { SEO } from './components/SEO';
@@ -23,10 +23,11 @@ import { Analytics } from './components/Analytics';
 import { CSPReporter } from './components/CSPReporter';
 import { analytics } from './components/Analytics';
 import { BlogPage } from './pages/BlogPage';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
 
 // Home Page Component
 const HomePage = ({ t, lang, setLang, darkMode, setDarkMode, setLegalModal }: any) => (
-  <>
+  <main id="main-content" tabIndex={-1}>
     <SEO t={t} lang={lang} />
     <Hero t={t} />
     <Services t={t} lang={lang} />
@@ -40,7 +41,7 @@ const HomePage = ({ t, lang, setLang, darkMode, setDarkMode, setLegalModal }: an
     <Contact t={t} />
     <Footer t={t} setLegalModal={setLegalModal} />
     <BackToTop />
-  </>
+  </main>
 );
 
 export default function App() {
@@ -81,6 +82,11 @@ export default function App() {
     }
   }, [darkMode]);
 
+  // Update html lang attribute when language changes
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
   // Scroll to top on route change
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -90,6 +96,11 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 bg-[#FDFCFB] dark:bg-gray-900 ${darkMode ? 'dark' : ''} font-sans selection:bg-[#1E4D92] selection:text-white overflow-x-hidden`}>
+      {/* Skip Navigation Link - WCAG 2.4.1 */}
+      <a href="#main-content" className="skip-link">
+        {currentTranslations.accessibility?.skipToMain || 'Skip to main content'}
+      </a>
+
       <Analytics />
       <CSPReporter />
 
@@ -109,10 +120,15 @@ export default function App() {
           />
         } />
         <Route path="/blog" element={
-          <BlogPage
-            t={currentTranslations}
-            lang={lang}
-          />
+          <main id="main-content" tabIndex={-1}>
+            <BlogPage
+              t={currentTranslations}
+              lang={lang}
+            />
+          </main>
+        } />
+        <Route path="/privacy-policy" element={
+          <PrivacyPolicy lang={lang} />
         } />
       </Routes>
 
@@ -125,7 +141,11 @@ export default function App() {
       )}
 
       {/* Cookie Banner & Legal Modal - on all pages */}
-      <CookieBanner lang={lang} onShowPrivacy={() => setLegalModal({ isOpen: true, type: 'privacy' })} />
+      <CookieBanner
+        lang={lang}
+        onShowPrivacy={() => setLegalModal({ isOpen: true, type: 'privacy' })}
+        privacyPolicyPath="/privacy-policy"
+      />
       <LegalModal
         isOpen={legalModal.isOpen}
         onClose={() => setLegalModal(prev => ({ ...prev, isOpen: false }))}

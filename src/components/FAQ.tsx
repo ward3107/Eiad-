@@ -76,9 +76,11 @@ export const FAQ = ({ t }: { t: any }) => {
                   transition={{ duration: 0.2, delay: i * 0.05 }}
                 >
                   <div className="bg-white dark:bg-gray-700/50 rounded-[2rem] overflow-hidden border border-gray-100 dark:border-white/5 shadow-sm transition-all hover:shadow-md">
-                    <button 
+                    <button
                       onClick={() => setActiveQuestion(activeQuestion === item.q ? null : item.q)}
                       aria-expanded={activeQuestion === item.q}
+                      aria-controls={`faq-answer-${i}`}
+                      id={`faq-question-${i}`}
                       className={`w-full flex items-center justify-between p-6 md:p-8 transition-colors ${
                         t.dir === 'rtl' ? 'text-right' : 'text-left'
                       }`}
@@ -104,6 +106,9 @@ export const FAQ = ({ t }: { t: any }) => {
                           animate={{ height: 'auto', opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: 'easeInOut' }}
+                          id={`faq-answer-${i}`}
+                          role="region"
+                          aria-labelledby={`faq-question-${i}`}
                         >
                           <div className="px-6 pb-8 md:px-8 md:pb-10 pt-0">
                             <div className="h-px bg-gray-100 dark:bg-gray-600 mb-6" />

@@ -30,7 +30,7 @@ export const Footer = ({ t, setLegalModal }: { t: any, setLegalModal: any }) => 
 
         <div id="privacy" className={`flex gap-10 text-sm font-bold uppercase tracking-widest ${t.dir === 'rtl' ? '' : 'flex-row-reverse'}`}>
           <Link to="/blog" className="hover:text-[#4B9CD3] transition-colors">{t.nav.blog || 'Blog'}</Link>
-          <button onClick={() => setLegalModal({ isOpen: true, type: 'privacy' })} className="hover:text-[#4B9CD3] transition-colors">{t.footer.privacy}</button>
+          <Link to="/privacy-policy" className="hover:text-[#4B9CD3] transition-colors">{t.footer.privacy}</Link>
           <button onClick={() => setLegalModal({ isOpen: true, type: 'terms' })} className="hover:text-[#4B9CD3] transition-colors">{t.footer.terms}</button>
           <a
             href="#contact"
