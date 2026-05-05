@@ -18,7 +18,12 @@
       "Bash(curl -sI https://eyad-physiotherapy.vercel.app)",
       "Bash(git push *)",
       "Bash(git commit -m 'fix: Make share widget links actually work by using onClick handlers *)",
-      "Bash(git commit -m 'remove: floating WhatsApp widget button *)"
+      "Bash(git commit -m 'remove: floating WhatsApp widget button *)",
+      "Bash(tasklist)",
+      "Bash(findstr \"node\")",
+      "Bash(netstat -ano)",
+      "Bash(findstr \":5173\")",
+      "Bash(npx vercel *)"
     ]
   }
 }

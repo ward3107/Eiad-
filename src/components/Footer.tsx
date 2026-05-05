@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Activity, Facebook, Instagram } from 'lucide-react';
 
 export const Footer = ({ t, setLegalModal }: { t: any, setLegalModal: any }) => {
@@ -28,10 +29,11 @@ export const Footer = ({ t, setLegalModal }: { t: any, setLegalModal: any }) => 
         </div>
 
         <div id="privacy" className={`flex gap-10 text-sm font-bold uppercase tracking-widest ${t.dir === 'rtl' ? '' : 'flex-row-reverse'}`}>
+          <Link to="/blog" className="hover:text-[#4B9CD3] transition-colors">{t.nav.blog || 'Blog'}</Link>
           <button onClick={() => setLegalModal({ isOpen: true, type: 'privacy' })} className="hover:text-[#4B9CD3] transition-colors">{t.footer.privacy}</button>
           <button onClick={() => setLegalModal({ isOpen: true, type: 'terms' })} className="hover:text-[#4B9CD3] transition-colors">{t.footer.terms}</button>
-          <a 
-            href="#contact" 
+          <a
+            href="#contact"
             onClick={(e) => scrollToSection(e, '#contact')}
             className="hover:text-[#4B9CD3] transition-colors"
           >

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Moon, Sun, MessageCircle } from 'lucide-react';
 import { ClinicLogo } from './Shared';
@@ -26,7 +27,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
     { name: t.nav.about, href: '#about' },
     { name: t.nav.gallery, href: '#gallery' },
     { name: t.nav.testimonials, href: '#testimonials' },
-    { name: t.nav.blog || 'Blog', href: '#blog' },
+    { name: t.nav.blog || 'Blog', href: '/blog', isRoute: true },
     { name: t.faq.tag, href: '#faq' },
     { name: t.nav.contact, href: '#contact' },
   ];
@@ -66,14 +67,24 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
         <div className="hidden md:flex items-center gap-8">
           <div className="flex items-center gap-6">
             {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href} 
-                onClick={(e) => scrollToSection(e, link.href)}
-                className="text-[#1A1A1A] dark:text-white/80 hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] font-medium transition-colors"
-              >
-                {link.name}
-              </a>
+              link.isRoute ? (
+                <Link
+                  key={link.name}
+                  to={link.href}
+                  className="text-[#1A1A1A] dark:text-white/80 hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] font-medium transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => scrollToSection(e, link.href)}
+                  className="text-[#1A1A1A] dark:text-white/80 hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] font-medium transition-colors"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
           <div className="flex items-center gap-4">
@@ -133,18 +144,36 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
           >
             <div className="py-6 px-4 flex flex-col gap-4 text-center">
               {navLinks.map((link) => (
-                <motion.a 
-                  key={link.name} 
-                  variants={{
-                    open: { opacity: 1, y: 0 },
-                    closed: { opacity: 0, y: 20 }
-                  }}
-                  href={link.href} 
-                  onClick={(e) => scrollToSection(e, link.href)}
-                  className="text-lg font-medium text-[#1A1A1A] dark:text-white py-2 block hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] transition-colors"
-                >
-                  {link.name}
-                </motion.a>
+                link.isRoute ? (
+                  <motion.div
+                    key={link.name}
+                    variants={{
+                      open: { opacity: 1, y: 0 },
+                      closed: { opacity: 0, y: 20 }
+                    }}
+                  >
+                    <Link
+                      to={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-lg font-medium text-[#1A1A1A] dark:text-white py-2 block hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
+                ) : (
+                  <motion.a
+                    key={link.name}
+                    variants={{
+                      open: { opacity: 1, y: 0 },
+                      closed: { opacity: 0, y: 20 }
+                    }}
+                    href={link.href}
+                    onClick={(e) => scrollToSection(e, link.href)}
+                    className="text-lg font-medium text-[#1A1A1A] dark:text-white py-2 block hover:text-[#1E4D92] dark:hover:text-[#4B9CD3] transition-colors"
+                  >
+                    {link.name}
+                  </motion.a>
+                )
               ))}
               <motion.a
                 variants={{

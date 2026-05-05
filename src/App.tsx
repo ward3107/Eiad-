@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { translations } from './constants/translations';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -18,12 +19,33 @@ import { BackToTop } from './components/BackToTop';
 import { SEO } from './components/SEO';
 import { ShareWidget } from './components/ShareWidget';
 import { SocialProof } from './components/SocialProof';
-import { Blog } from './components/Blog';
 import { Analytics } from './components/Analytics';
 import { CSPReporter } from './components/CSPReporter';
 import { analytics } from './components/Analytics';
+import { BlogPage } from './pages/BlogPage';
+
+// Home Page Component
+const HomePage = ({ t, lang, setLang, darkMode, setDarkMode, setLegalModal }: any) => (
+  <>
+    <SEO t={t} lang={lang} />
+    <Hero t={t} />
+    <Services t={t} lang={lang} />
+    <Portfolio t={t} lang={lang} />
+    <FAQ t={t} />
+    <About t={t} />
+    <Gallery t={t} />
+    <Testimonials t={t} />
+    <SocialProof t={t} />
+    <CTABar t={t} />
+    <Contact t={t} />
+    <Footer t={t} setLegalModal={setLegalModal} />
+    <BackToTop />
+    <ShareWidget dir={t.dir as 'rtl' | 'ltr'} t={{ instagram: t.instagram }} />
+  </>
+);
 
 export default function App() {
+  const location = useLocation();
   const [lang, setLang] = useState<'he' | 'en' | 'ru' | 'ar' | 'el'>('he');
 
   // Track language changes
@@ -59,7 +81,11 @@ export default function App() {
       localStorage.setItem('theme', 'light');
     }
   }, [darkMode]);
-  // Note: Theme tracking is now handled in handleThemeChange to avoid double tracking
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const currentTranslations = (translations as any)[lang];
 
@@ -67,22 +93,39 @@ export default function App() {
     <div className={`min-h-screen transition-colors duration-500 bg-[#FDFCFB] dark:bg-gray-900 ${darkMode ? 'dark' : ''} font-sans selection:bg-[#1E4D92] selection:text-white overflow-x-hidden`}>
       <Analytics />
       <CSPReporter />
-      <SEO t={currentTranslations} lang={lang} />
-      <Navbar t={currentTranslations} lang={lang} setLang={handleLanguageChange} darkMode={darkMode} setDarkMode={handleThemeChange} />
-      <Hero t={currentTranslations} />
-      <Services t={currentTranslations} lang={lang} />
-      <Portfolio t={currentTranslations} lang={lang} />
-      <FAQ t={currentTranslations} />
-      <About t={currentTranslations} />
-      <Gallery t={currentTranslations} />
-      <Testimonials t={currentTranslations} />
-      <SocialProof t={currentTranslations} />
-      <Blog t={currentTranslations} lang={lang} />
-      <CTABar t={currentTranslations} />
-      <Contact t={currentTranslations} />
-      <Footer t={currentTranslations} setLegalModal={setLegalModal} />
 
-      <AccessibilityWidget />
+      {/* Navbar - always visible */}
+      <Navbar t={currentTranslations} lang={lang} setLang={handleLanguageChange} darkMode={darkMode} setDarkMode={handleThemeChange} />
+
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={
+          <HomePage
+            t={currentTranslations}
+            lang={lang}
+            setLang={handleLanguageChange}
+            darkMode={darkMode}
+            setDarkMode={handleThemeChange}
+            setLegalModal={setLegalModal}
+          />
+        } />
+        <Route path="/blog" element={
+          <BlogPage
+            t={currentTranslations}
+            lang={lang}
+          />
+        } />
+      </Routes>
+
+      {/* Global widgets - only on home page */}
+      {location.pathname === '/' && (
+        <>
+          <AccessibilityWidget />
+          <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} t={{ instagram: currentTranslations.instagram }} />
+        </>
+      )}
+
+      {/* Cookie Banner & Legal Modal - on all pages */}
       <CookieBanner lang={lang} onShowPrivacy={() => setLegalModal({ isOpen: true, type: 'privacy' })} />
       <LegalModal
         isOpen={legalModal.isOpen}
@@ -90,8 +133,6 @@ export default function App() {
         type={legalModal.type}
         lang={lang}
       />
-      <BackToTop />
-      <ShareWidget dir={currentTranslations.dir as 'rtl' | 'ltr'} t={{ instagram: currentTranslations.instagram }} />
-          </div>
+    </div>
   );
 }
