@@ -69,6 +69,10 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
     }
   };
 
+  const handleShareClick = (href: string) => {
+    window.open(href, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <div className="fixed left-6 top-1/2 -translate-y-1/2 z-[60] flex flex-col items-center gap-3">
       {/* Main Share Button */}
@@ -105,7 +109,38 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
           >
             {shareOptions.map((option, index) => {
               const Icon = option.icon;
-              const content = (
+
+              // Copy Link button (action)
+              if (option.name === 'Copy Link') {
+                return copied ? (
+                  <motion.div
+                    key="copy-check"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold"
+                  >
+                    ✓
+                  </motion.div>
+                ) : (
+                  <motion.button
+                    key="copy-link"
+                    initial={{ opacity: 0, x: -20, scale: 0 }}
+                    animate={{ opacity: 1, x: 0, scale: 1 }}
+                    exit={{ opacity: 0, x: -20, scale: 0 }}
+                    transition={{ delay: index * 0.05, duration: 0.2 }}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    onClick={() => copyToClipboard()}
+                    className={`w-12 h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
+                    aria-label={option.name}
+                  >
+                    <Icon size={20} strokeWidth={2.5} />
+                  </motion.button>
+                );
+              }
+
+              // Social share buttons (links)
+              return (
                 <motion.button
                   key={option.name}
                   initial={{ opacity: 0, x: -20, scale: 0 }}
@@ -114,28 +149,13 @@ export const ShareWidget = ({ dir = 'rtl' }: ShareWidgetProps) => {
                   transition={{ delay: index * 0.05, duration: 0.2 }}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={option.action || undefined}
+                  onClick={() => option.href && handleShareClick(option.href)}
                   className={`w-12 h-12 ${option.color} ${option.textColor} rounded-full shadow-lg flex items-center justify-center transition-all`}
                   aria-label={option.name}
-                  as={option.href ? 'a' : 'button'}
-                  href={option.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   <Icon size={20} strokeWidth={2.5} />
                 </motion.button>
               );
-
-              return copied && option.name === 'Copy Link' ? (
-                <motion.div
-                  key="copied"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="w-12 h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center text-xs font-bold"
-                >
-                  ✓
-                </motion.div>
-              ) : content;
             })}
           </motion.div>
         )}
