@@ -93,7 +93,7 @@ export const BlogPage = ({ t, lang }: { t: any; lang: string }) => {
                   <div className="relative h-48 overflow-hidden">
                     <div className={`absolute inset-0 bg-gradient-to-br ${post.color || 'from-[#1E4D92] to-[#4B9CD3]'} group-hover:scale-110 transition-transform duration-500`}>
                       {post.image ? (
-                        <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+                        <img src={post.image} alt={post.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-white/30">
                           <span className="text-6xl font-serif font-bold">{post.title?.[0]}</span>
@@ -170,7 +170,7 @@ export const BlogPage = ({ t, lang }: { t: any; lang: string }) => {
               <div className="relative">
                 <div className={`h-64 rounded-t-[2rem] bg-gradient-to-br ${selectedPostData.color || 'from-[#1E4D92] to-[#4B9CD3]'} relative overflow-hidden`}>
                   {selectedPostData.image ? (
-                    <img src={selectedPostData.image} alt={selectedPostData.title} className="w-full h-full object-cover" />
+                    <img src={selectedPostData.image} alt={selectedPostData.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-white/20">
                       <span className="text-8xl font-serif font-bold">{selectedPostData.title?.[0]}</span>

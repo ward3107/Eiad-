@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { MapPin, Phone, Clock, Facebook, Instagram, MessageCircle, Activity, CheckCircle2, AlertCircle } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 import { useRateLimit } from '../hooks/useRateLimit';
+import { CONTACT } from '../constants/contact';
 
 export const Contact = ({ t }: { t: any }) => {
   const [formData, setFormData] = useState({ name: '', phone: '', message: '' });
@@ -62,14 +63,22 @@ export const Contact = ({ t }: { t: any }) => {
 
     if (validate()) {
       recordAttempt(); // Record this submission attempt
-
       setIsSubmitting(true);
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setFormData({ name: '', phone: '', message: '' });
-        setTimeout(() => setIsSuccess(false), 5000);
-      }, 1500);
+
+      // Deliver the lead via WhatsApp: open a pre-filled chat to the clinic.
+      const isRtl = t.dir === 'rtl';
+      const lines = isRtl
+        ? [`שם: ${formData.name}`, `טלפון: ${formData.phone}`, `הודעה: ${formData.message}`]
+        : [`Name: ${formData.name}`, `Phone: ${formData.phone}`, `Message: ${formData.message}`];
+      const text = encodeURIComponent(lines.join('\n'));
+      const waUrl = `${CONTACT.whatsappUrl}?text=${text}`;
+
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setFormData({ name: '', phone: '', message: '' });
+      setTimeout(() => setIsSuccess(false), 5000);
     }
   };
 
@@ -89,7 +98,7 @@ export const Contact = ({ t }: { t: any }) => {
             <div className="space-y-6">
               {[
                 { icon: <MapPin size={28} />, tag: t.contact.addressTag, val: t.contact.address },
-                { icon: <Phone size={28} />, tag: t.contact.phoneTag, val: t.contact.phone || "050-2834280", dir: "ltr", isPhone: true },
+                { icon: <Phone size={28} />, tag: t.contact.phoneTag, val: t.contact.phone || CONTACT.phoneDisplay, dir: "ltr", isPhone: true },
                 { icon: <Clock size={28} />, tag: t.contact.hoursTag, val: t.contact.hours }
               ].map((item, i) => (
                 <motion.div
@@ -116,9 +125,9 @@ export const Contact = ({ t }: { t: any }) => {
 
             <div className={`mt-12 flex gap-4 ${t.dir === 'rtl' ? '' : 'justify-end'}`}>
                {[
-                 { icon: Facebook, href: 'https://www.facebook.com' },
-                 { icon: Instagram, href: t.contact.instagram || 'https://www.instagram.com/eyad.abuaqel' },
-                 { icon: MessageCircle, href: t.contact.whatsapp || 'https://wa.me/972502834280', isWhatsApp: true }
+                 { icon: Facebook, href: CONTACT.facebook },
+                 { icon: Instagram, href: t.contact.instagram || CONTACT.instagram },
+                 { icon: MessageCircle, href: t.contact.whatsapp || CONTACT.whatsappUrl, isWhatsApp: true }
                ].map((item, i) => (
                   <motion.a
                     key={i}
@@ -320,7 +329,7 @@ export const Contact = ({ t }: { t: any }) => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="https://www.google.com/maps/dir/?api=1&destination=32.9602,35.1664"
+              href={CONTACT.mapsDirections}
               target="_blank"
               rel="noopener noreferrer"
               className="pointer-events-auto flex items-center gap-3 bg-[#1E4D92] dark:bg-[#4B9CD3] text-white dark:text-gray-900 px-8 py-4 rounded-full font-bold shadow-2xl hover:bg-[#1A1A1A] dark:hover:bg-white transition-all"

@@ -1,51 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- Hebrew (Default) -->
+  <!-- Home (all languages are served from this URL via client-side switching) -->
   <url>
-    <loc>https://eyad-physiotherapy.com</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://eyad-physiotherapy.vercel.app/</loc>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="he" href="https://eyad-physiotherapy.com"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://eyad-physiotherapy.com/en"/>
-    <xhtml:link rel="alternate" hreflang="ru" href="https://eyad-physiotherapy.com/ru"/>
-    <xhtml:link rel="alternate" hreflang="ar" href="https://eyad-physiotherapy.com/ar"/>
-    <xhtml:link rel="alternate" hreflang="el" href="https://eyad-physiotherapy.com/el"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://eyad-physiotherapy.com"/>
   </url>
 
-  <!-- English -->
+  <!-- Blog -->
   <url>
-    <loc>https://eyad-physiotherapy.com/en</loc>
-    <lastmod>2026-05-05</lastmod>
+    <loc>https://eyad-physiotherapy.vercel.app/blog</loc>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Russian -->
+  <!-- Privacy Policy -->
   <url>
-    <loc>https://eyad-physiotherapy.com/ru</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Arabic -->
-  <url>
-    <loc>https://eyad-physiotherapy.com/ar</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Greek -->
-  <url>
-    <loc>https://eyad-physiotherapy.com/el</loc>
-    <lastmod>2026-05-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://eyad-physiotherapy.vercel.app/privacy-policy</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

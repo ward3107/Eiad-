@@ -98,8 +98,8 @@
     border: 2px solid #fff !important;
   }
 
-  .high-contrast .bg-[#1E4D92],
-  .high-contrast .bg-[#1A1A1A] {
+  .high-contrast .bg-\[\#1E4D92\],
+  .high-contrast .bg-\[\#1A1A1A\] {
     background-color: #fff !important;
     color: #000 !important;
   }

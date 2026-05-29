@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { MessageCircle, ArrowLeft, ArrowRight } from 'lucide-react';
+import { CONTACT } from '../constants/contact';
 
 export const CTABar = ({ t }: { t: any }) => {
   return (
@@ -26,7 +27,7 @@ export const CTABar = ({ t }: { t: any }) => {
         <motion.a
           whileHover={{ scale: 1.05, y: -5 }}
           whileTap={{ scale: 0.95 }}
-          href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+          href={t.contact.whatsapp || CONTACT.whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="group bg-white text-[#1E4D92] px-12 py-6 rounded-full font-bold text-xl flex items-center gap-4 hover:shadow-[0_20px_50px_rgba(255,255,255,0.2)] transition-all"

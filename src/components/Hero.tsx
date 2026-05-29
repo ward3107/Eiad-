@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2, ChevronRight, Star, MessageCircle } from 'lucide-react';
+import { CONTACT } from '../constants/contact';
 
 export const Hero = ({ t }: { t: any }) => {
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -101,7 +102,7 @@ export const Hero = ({ t }: { t: any }) => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
-              href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+              href={t.contact.whatsapp || CONTACT.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#128C7E] text-white px-10 py-5 rounded-full font-bold text-lg hover:shadow-2xl hover:shadow-[#25D366]/30 transition-all flex items-center justify-center gap-2 group"
@@ -119,10 +120,13 @@ export const Hero = ({ t }: { t: any }) => {
           </div>
 
           <div className="mt-12 flex items-center gap-6">
-            <div className={`flex ${t.dir === 'rtl' ? '-space-x-4 space-x-reverse' : '-space-x-4'}`}>
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-12 h-12 rounded-full border-4 border-white dark:border-gray-800 bg-gray-200 dark:bg-gray-700 overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/150?u=${i + 10}`} alt={t.dir === 'rtl' ? 'מטופל מרוצה' : 'Satisfied patient'} />
+            <div className={`flex ${t.dir === 'rtl' ? '-space-x-4 space-x-reverse' : '-space-x-4'}`} aria-hidden="true">
+              {['ל', 'מ', 'ר', 'נ'].map((initial, i) => (
+                <div
+                  key={i}
+                  className="w-12 h-12 rounded-full border-4 border-white dark:border-gray-800 bg-[#1E4D92] dark:bg-[#4B9CD3] flex items-center justify-center text-white dark:text-gray-900 font-bold shadow-sm"
+                >
+                  {initial}
                 </div>
               ))}
             </div>

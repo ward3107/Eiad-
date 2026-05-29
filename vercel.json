@@ -15,6 +15,10 @@
       "source": "/(.*)",
       "headers": [
         {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
           "key": "X-Frame-Options",
           "value": "DENY"
         },
@@ -44,7 +48,7 @@
         },
         {
           "key": "Reporting-Endpoints",
-          "value": "csp-endpoint='https://eyad-physiotherapy.com/csp-reports'"
+          "value": "csp-endpoint='https://eyad-physiotherapy.vercel.app/csp-reports'"
         }
       ]
     }

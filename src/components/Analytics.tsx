@@ -15,12 +15,13 @@ export const initializeGA = () => {
     return;
   }
 
-  // Load gtag script with SRI (Subresource Integrity)
+  // Load gtag script. Note: gtag/js is served dynamically by Google and its
+  // contents change frequently, so a Subresource Integrity (integrity) hash
+  // cannot be used here — a pinned hash would cause the browser to block the
+  // script on every change and silently disable analytics.
   const script = document.createElement('script');
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
-  script.integrity = 'sha384-dHwgD2k4pSNEEeHNU6dUJ5KJxGJwngcKqtYCrqnVMDoOeEkkOya8WbvfxKJREYeEe';
-  script.crossOrigin = 'anonymous';
   script.referrerPolicy = 'no-referrer-when-downgrade';
   document.head.appendChild(script);
 
