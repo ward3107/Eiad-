@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { ScrollReveal } from './ScrollReveal';
 
 export const Gallery = ({ t }: { t: any }) => {
-  const [filter, setFilter] = useState<'all' | 'clinic' | 'staff'>('all');
+  const [filter, setFilter] = useState<'all' | 'clinic'>('all');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   
@@ -29,14 +29,9 @@ export const Gallery = ({ t }: { t: any }) => {
       category: 'clinic', 
       title: t.dir === 'rtl' ? 'סוויטת טיפול ידני מקצועית' : 'Professional Manual Therapy Suite'
     },
-    { 
-      url: "https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800", 
-      category: 'staff', 
-      title: t.dir === 'rtl' ? 'ייעוץ מומחה ובניית תכנית שיקום' : 'Expert Rehabilitation Consultation'
-    },
-    { 
-      url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800", 
-      category: 'clinic', 
+    {
+      url: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+      category: 'clinic',
       title: t.dir === 'rtl' ? 'אזור שיקום ופעילות גופנית' : 'Rehab and Exercise Area'
     }
   ];
@@ -54,7 +49,7 @@ export const Gallery = ({ t }: { t: any }) => {
   }, [filteredImages.length]);
 
   // Reset index when filter changes
-  const handleFilterChange = (newFilter: 'all' | 'clinic' | 'staff') => {
+  const handleFilterChange = (newFilter: 'all' | 'clinic') => {
     setFilter(newFilter);
     setCurrentIndex(0);
     setDirection(0);
@@ -108,13 +103,6 @@ export const Gallery = ({ t }: { t: any }) => {
               >
                 {t.gallery.clinic}
               </button>
-              <button 
-                onClick={() => handleFilterChange('staff')}
-                aria-pressed={filter === 'staff'}
-                className={`px-8 py-3 rounded-full font-bold transition-all focus:outline-none focus:ring-2 focus:ring-[#1E4D92]/20 ${filter === 'staff' ? 'bg-[#1A1A1A] dark:bg-white text-white dark:text-gray-900 shadow-xl' : 'bg-white dark:bg-gray-800 text-[#1A1A1A] dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 shadow-sm border border-transparent dark:border-white/5'}`}
-              >
-                {t.gallery.staff}
-              </button>
             </div>
           </motion.div>
         </ScrollReveal>
@@ -160,7 +148,7 @@ export const Gallery = ({ t }: { t: any }) => {
                   transition={{ delay: 0.2 }}
                 >
                   <span className="text-[#4B9CD3] text-xs font-bold uppercase tracking-widest mb-3 block">
-                    {filteredImages[currentIndex].category === 'clinic' ? t.gallery.clinic : t.gallery.staff}
+                    {t.gallery.clinic}
                   </span>
                   <h4 className="text-white text-3xl md:text-5xl font-serif">{filteredImages[currentIndex].title}</h4>
                 </motion.div>
