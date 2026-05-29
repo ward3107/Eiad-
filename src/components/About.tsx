@@ -14,14 +14,18 @@ export const About = ({ t }: { t: any }) => {
             className="grid grid-cols-2 gap-4"
           >
             <div className="pt-12">
-              <img 
-                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=500" 
-                alt={t.dir === 'rtl' ? 'פנים הקליניקה - סביבת טיפול נעימה' : 'Clinic interior - welcoming treatment environment'} 
+              <img
+                src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=500"
+                alt={t.dir === 'rtl' ? 'פנים הקליניקה - סביבת טיפול נעימה' : 'Clinic interior - welcoming treatment environment'}
+                loading="lazy"
+                decoding="async"
                 className="rounded-3xl h-64 w-full object-cover mb-4 shadow-xl"
               />
-              <img 
-                src="https://images.unsplash.com/photo-1598387181032-a75ff3a5ffbc?auto=format&fit=crop&q=80&w=500" 
-                alt={t.dir === 'rtl' ? 'ציוד טיפולי מתקדם' : 'Advanced therapeutic equipment'} 
+              <img
+                src="https://images.unsplash.com/photo-1598387181032-a75ff3a5ffbc?auto=format&fit=crop&q=80&w=500"
+                alt={t.dir === 'rtl' ? 'ציוד טיפולי מתקדם' : 'Advanced therapeutic equipment'}
+                loading="lazy"
+                decoding="async"
                 className="rounded-3xl h-48 w-full object-cover shadow-xl"
               />
             </div>

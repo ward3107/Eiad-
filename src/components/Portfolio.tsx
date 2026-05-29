@@ -33,6 +33,8 @@ export const Portfolio = ({ t, lang }: { t: any; lang: string }) => {
                   <img
                     src={caseItem.image}
                     alt={caseItem.title}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, Moon, Sun, MessageCircle } from 'lucide-react';
 import { ClinicLogo } from './Shared';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { CONTACT } from '../constants/contact';
 
 export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: { 
   t: any, 
@@ -97,7 +98,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
             </button>
             <LanguageSwitcher currentLang={lang} setLang={setLang} />
             <a
-              href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+              href={t.contact.whatsapp || CONTACT.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-2.5 rounded-full font-medium transition-all transform hover:scale-105 shadow-lg shadow-[#25D366]/20 flex items-center gap-2"
@@ -181,7 +182,7 @@ export const Navbar = ({ t, lang, setLang, darkMode, setDarkMode }: {
                   open: { opacity: 1, scale: 1 },
                   closed: { opacity: 0, scale: 0.9 }
                 }}
-                href={t.contact.whatsapp || 'https://wa.me/972502834280'}
+                href={t.contact.whatsapp || CONTACT.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-full font-bold text-lg block mx-auto w-full max-w-[280px] shadow-lg shadow-[#25D366]/20 flex items-center justify-center gap-2"

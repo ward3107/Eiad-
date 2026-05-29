@@ -146,9 +146,11 @@ export const Gallery = ({ t }: { t: any }) => {
               }}
               className="absolute inset-0 rounded-[3rem] overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing touch-pan-y"
             >
-              <img 
-                src={filteredImages[currentIndex].url} 
+              <img
+                src={filteredImages[currentIndex].url}
                 alt={filteredImages[currentIndex].title}
+                loading="lazy"
+                decoding="async"
                 className="w-full h-full object-cover pointer-events-none"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-transparent to-transparent flex flex-col justify-end p-10 md:p-16">
