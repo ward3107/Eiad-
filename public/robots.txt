@@ -10,7 +10,7 @@ Disallow: /admin/
 Disallow: /private/
 
 # Sitemap location
-Sitemap: https://eyad-physiotherapy.com/sitemap.xml
+Sitemap: https://eyad-physiotherapy.vercel.app/sitemap.xml
 
 # Crawl delay (optional, prevents server overload)
 Crawl-delay: 1

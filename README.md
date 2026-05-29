@@ -1,20 +1,56 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Eyad Abu Aqel — Physiotherapy Clinic Website
 
-# Run and deploy your AI Studio app
+A fast, multilingual marketing site for the Eyad Abu Aqel physiotherapy clinic
+in Abu Sinan, built with React + Vite + TypeScript and Tailwind CSS.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/ffb783b1-1dda-4581-a969-737a6ad3e2fd
+- **5 languages** with full RTL/LTR support: Hebrew (default), English, Russian,
+  Arabic, Greek — switched client-side and persisted across reloads.
+- **Sections:** hero, services, portfolio, FAQ, about, gallery, testimonials,
+  social proof, contact (with WhatsApp lead delivery), and a blog.
+- **Accessibility:** WCAG-oriented features, skip link, high-contrast and
+  reduced-motion support, accessibility widget.
+- **Privacy & consent:** GTM Consent Mode v2 (Amendment 13 compliant) cookie
+  banner and a privacy policy page.
+- **SEO:** per-page metadata, Open Graph/Twitter cards, JSON-LD structured data
+  (PhysiotherapyClinic + FAQPage), sitemap and robots.
 
-## Run Locally
+## Tech stack
 
-**Prerequisites:**  Node.js
+- React 19 + React Router 6
+- Vite 6 (Terser-minified production build)
+- Tailwind CSS 4
+- `motion` for animations, `lucide-react` for icons
 
+## Run locally
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+**Prerequisites:** Node.js 18+
+
+```bash
+npm install
+npm run dev      # start dev server on http://localhost:3000
+```
+
+## Scripts
+
+| Command           | Description                                  |
+| ----------------- | -------------------------------------------- |
+| `npm run dev`     | Start the Vite dev server                    |
+| `npm run build`   | Production build to `dist/`                  |
+| `npm run preview` | Preview the production build locally         |
+| `npm run lint`    | Type-check the project (`tsc --noEmit`)      |
+| `npm run clean`   | Remove the `dist/` directory                 |
+
+## Deployment
+
+Configured for **Vercel** (see `vercel.json`), which builds with
+`npm run build`, serves `dist/`, rewrites all routes to the SPA entry, and
+applies the security headers (CSP, HSTS, X-Frame-Options, etc.).
+
+## Configuration notes
+
+- Analytics is wired for GA4 but disabled until a real Measurement ID is set in
+  `src/components/Analytics.tsx` (currently the `G-XXXXXXXXXX` placeholder).
+- The contact form delivers leads by opening a pre-filled WhatsApp chat; the
+  destination number lives in `src/components/Contact.tsx`.

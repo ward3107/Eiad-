@@ -52,6 +52,9 @@ export const Contact = ({ t }: { t: any }) => {
     return isValid;
   };
 
+  // WhatsApp number the lead is delivered to (digits only, international format)
+  const WHATSAPP_NUMBER = '972502834280';
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -62,14 +65,22 @@ export const Contact = ({ t }: { t: any }) => {
 
     if (validate()) {
       recordAttempt(); // Record this submission attempt
-
       setIsSubmitting(true);
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        setFormData({ name: '', phone: '', message: '' });
-        setTimeout(() => setIsSuccess(false), 5000);
-      }, 1500);
+
+      // Deliver the lead via WhatsApp: open a pre-filled chat to the clinic.
+      const isRtl = t.dir === 'rtl';
+      const lines = isRtl
+        ? [`שם: ${formData.name}`, `טלפון: ${formData.phone}`, `הודעה: ${formData.message}`]
+        : [`Name: ${formData.name}`, `Phone: ${formData.phone}`, `Message: ${formData.message}`];
+      const text = encodeURIComponent(lines.join('\n'));
+      const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      setFormData({ name: '', phone: '', message: '' });
+      setTimeout(() => setIsSuccess(false), 5000);
     }
   };
 

@@ -33,7 +33,7 @@ export const SEO = ({ t, lang }: SEOProps) => {
       'og:site_name': t.name,
       'og:title': localizedTitle,
       'og:description': description,
-      'og:url': `${SITE_URL}${lang === 'en' ? '' : `/${lang}`}`,
+      'og:url': SITE_URL,
       'og:image': DEFAULT_IMAGE,
       'og:image:width': '1200',
       'og:image:height': '630',
@@ -76,31 +76,11 @@ export const SEO = ({ t, lang }: SEOProps) => {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', `${SITE_URL}${lang === 'en' ? '' : `/${lang}`}`);
-
-    // Alternate language links
-    const languages = ['he', 'en', 'ru', 'ar', 'el'];
-    languages.forEach(l => {
-      const href = l === 'en' ? SITE_URL : `${SITE_URL}/${l}`;
-      let alternate = document.querySelector(`link[rel="alternate"][hreflang="${l}"]`);
-      if (!alternate) {
-        alternate = document.createElement('link');
-        alternate.setAttribute('rel', 'alternate');
-        alternate.setAttribute('hreflang', l);
-        document.head.appendChild(alternate);
-      }
-      alternate.setAttribute('href', href);
-    });
-
-    // Add x-default for language detection
-    let xDefault = document.querySelector('link[rel="alternate"][hreflang="x-default"]');
-    if (!xDefault) {
-      xDefault = document.createElement('link');
-      xDefault.setAttribute('rel', 'alternate');
-      xDefault.setAttribute('hreflang', 'x-default');
-      document.head.appendChild(xDefault);
-    }
-    xDefault.setAttribute('href', SITE_URL);
+    // All languages are served from the same URL (client-side switching),
+    // so the canonical URL is always the single site root. Advertising
+    // per-language paths (/en, /ru, ...) would point at routes that do not
+    // exist and create duplicate-content signals, so we intentionally do not.
+    canonical.setAttribute('href', SITE_URL);
 
     // Schema.org Structured Data (LocalBusiness + FAQPage)
     const faqItems = t.faq?.items || [];
@@ -194,7 +174,7 @@ export const SEO = ({ t, lang }: SEOProps) => {
     };
 
     // Inject JSON-LD Schema
-    let script = document.getElementById('structured-data-schema');
+    let script = document.getElementById('structured-data-schema') as HTMLScriptElement | null;
     if (!script) {
       script = document.createElement('script');
       script.id = 'structured-data-schema';

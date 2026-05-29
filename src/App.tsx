@@ -46,11 +46,22 @@ const HomePage = ({ t, lang, setLang, darkMode, setDarkMode, setLegalModal }: an
 
 export default function App() {
   const location = useLocation();
-  const [lang, setLang] = useState<'he' | 'en' | 'ru' | 'ar' | 'el'>('he');
+  const [lang, setLang] = useState<'he' | 'en' | 'ru' | 'ar' | 'el'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('lang');
+      if (saved === 'he' || saved === 'en' || saved === 'ru' || saved === 'ar' || saved === 'el') {
+        return saved;
+      }
+    }
+    return 'he';
+  });
 
-  // Track language changes
+  // Track language changes (and persist the choice across reloads)
   const handleLanguageChange = (newLang: 'he' | 'en' | 'ru' | 'ar' | 'el') => {
     setLang(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('lang', newLang);
+    }
     analytics.trackLanguageChange(newLang);
   };
 
