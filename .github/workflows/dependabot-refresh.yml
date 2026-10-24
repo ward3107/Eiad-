@@ -36,6 +36,7 @@ jobs:
           import json
           import os
           import re
+          import time
           import urllib.parse
           import urllib.request
 
@@ -66,12 +67,12 @@ jobs:
                       return out
               raise RuntimeError("Pagination bound exceeded; inspect before requesting a rebase")
 
-          def trusted(pr, base):
+          def trusted(pr, base, require_auto=True):
               return (pr.get("state") == "open" and not pr.get("draft")
                   and pr.get("user", {}).get("login") == "dependabot[bot]"
                   and (pr.get("head", {}).get("repo") or {}).get("full_name") == repo
                   and pr.get("base", {}).get("ref") == base
-                  and ((pr.get("auto_merge") or {}).get("enabled_by") or {}).get("login") == "github-actions[bot]")
+                  and (not require_auto or ((pr.get("auto_merge") or {}).get("enabled_by") or {}).get("login") == "github-actions[bot]"))
 
           def green_checks(head, required):
               runs = request("/repos/" + repo + "/commits/" + head + "/check-runs?filter=latest&per_page=100").get("check_runs", [])
@@ -106,16 +107,33 @@ jobs:
               pulls = pages("/repos/" + repo + "/pulls?state=open&sort=created&direction=asc&base=" + urllib.parse.quote(base, safe=""))
               now = datetime.datetime.now(datetime.timezone.utc)
               for item in pulls:
-                  if not trusted(item, base):
+                  # List summaries may omit auto-merge details; require them on full GET.
+                  if not trusted(item, base, require_auto=False):
                       continue
                   number = item["number"]
                   pr = request("/repos/" + repo + "/pulls/" + str(number))
-                  if not trusted(pr, base) or pr.get("mergeable_state") != "behind" or pr.get("mergeable") is False:
+                  for attempt in range(5):
+                      if pr.get("mergeable_state") != "unknown":
+                          break
+                      time.sleep(3)
+                      pr = request("/repos/" + repo + "/pulls/" + str(number))
+                  if not trusted(pr, base):
+                      actor = ((pr.get("auto_merge") or {}).get("enabled_by") or {}).get("login")
+                      print("PR #" + str(number) + ": no trusted auto-merge actor (" + str(actor) + "); skipped")
+                      continue
+                  if pr.get("mergeable_state") != "behind" or pr.get("mergeable") is False:
+                      print("PR #" + str(number) + ": mergeability=" + str(pr.get("mergeable_state")) + "; skipped")
                       continue
                   head = pr["head"]["sha"]
                   commits = pages("/repos/" + repo + "/pulls/" + str(number) + "/commits")
                   if not commits or len(commits) != pr["commits"]:
                       continue
+                  for index, commit in enumerate(commits):
+                      if "verification" not in commit.get("commit", {}):
+                          full = request("/repos/" + repo + "/commits/" + commit["sha"])
+                          if full.get("sha") != commit["sha"]:
+                              raise RuntimeError("Commit changed during signature verification")
+                          commits[index] = full
                   if any((c.get("author") or {}).get("login") != "dependabot[bot]"
                       or (c.get("committer") or {}).get("login") not in {"dependabot[bot]", "web-flow"}
                       or not c.get("commit", {}).get("verification", {}).get("verified") for c in commits):
@@ -123,8 +141,10 @@ jobs:
                       continue
                   types = [t for c in commits for t in re.findall(r"(?m)^\s*update-type:\s*(\S+)\s*$", c["commit"]["message"])]
                   if not types or not all(t in allowed for t in types):
+                      print("PR #" + str(number) + ": Major or unknown update metadata; skipped")
                       continue
                   if not green_checks(head, required):
+                      print("PR #" + str(number) + ": required checks are not all successful; skipped")
                       continue
                   base_sha = request("/repos/" + repo + "/git/ref/heads/" + urllib.parse.quote(base, safe=""))["object"]["sha"]
                   marker = marker_prefix + "head=" + head + " base=" + base_sha + " -->"
