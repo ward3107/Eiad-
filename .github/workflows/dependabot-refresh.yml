@@ -1,0 +1,151 @@
+name: Refresh stale Dependabot updates
+
+on:
+  push:
+    branches: ["main"]
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependabot-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: read
+      statuses: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      # Only metadata from GitHub APIs is read. No checkout or PR code runs.
+      # Dependabot performs its own rebase so its trusted push starts normal CI.
+      - name: Request at most one verified patch or minor rebase
+        shell: python
+        run: |
+          import datetime
+          import json
+          import os
+          import re
+          import urllib.parse
+          import urllib.request
+
+          repo = os.environ["REPO"]
+          api_root = os.environ.get("GITHUB_API_URL", "https://api.github.com")
+          allowed = {"version-update:semver-patch", "version-update:semver-minor"}
+          marker_prefix = "<!-- dependabot-auto-refresh "
+
+          def request(path, body=None):
+              data = json.dumps(body).encode() if body is not None else None
+              req = urllib.request.Request(api_root + path, data=data, headers={
+                  "Authorization": "Bearer " + os.environ["GH_TOKEN"],
+                  "Accept": "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                  "Content-Type": "application/json",
+              }, method="POST" if body is not None else "GET")
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  return json.load(response)
+
+          def pages(path):
+              out = []
+              for page in range(1, 11):
+                  values = request(path + ("&" if "?" in path else "?") + "per_page=100&page=" + str(page))
+                  if not isinstance(values, list):
+                      raise RuntimeError("Unexpected paginated response")
+                  out.extend(values)
+                  if len(values) < 100:
+                      return out
+              raise RuntimeError("Pagination bound exceeded; inspect before requesting a rebase")
+
+          def trusted(pr, base):
+              return (pr.get("state") == "open" and not pr.get("draft")
+                  and pr.get("user", {}).get("login") == "dependabot[bot]"
+                  and (pr.get("head", {}).get("repo") or {}).get("full_name") == repo
+                  and pr.get("base", {}).get("ref") == base
+                  and ((pr.get("auto_merge") or {}).get("enabled_by") or {}).get("login") == "github-actions[bot]")
+
+          def green_checks(head, required):
+              runs = request("/repos/" + repo + "/commits/" + head + "/check-runs?filter=latest&per_page=100").get("check_runs", [])
+              statuses = request("/repos/" + repo + "/commits/" + head + "/status").get("statuses", [])
+              for item in required:
+                  context, source = item["context"], item.get("integration_id")
+                  matched = [r for r in runs if r["name"] == context and (source is None or r["app"]["id"] == source)]
+                  if matched:
+                      latest = max(matched, key=lambda r: r["id"])
+                      if latest["status"] != "completed" or latest["conclusion"] != "success":
+                          return False
+                      continue
+                  matched = [s for s in statuses if s["context"] == context]
+                  if source == 8329:
+                      matched = [s for s in matched if s.get("creator", {}).get("login") in {"vercel", "vercel[bot]"}]
+                  if not matched or max(matched, key=lambda s: s["id"])["state"] != "success":
+                      return False
+              return True
+
+          def main():
+              metadata = request("/repos/" + repo)
+              base = metadata["default_branch"]
+              rules = pages("/repos/" + repo + "/rules/branches/" + urllib.parse.quote(base, safe=""))
+              strict = [r for r in rules if r.get("type") == "required_status_checks"
+                  and r.get("parameters", {}).get("strict_required_status_checks_policy")]
+              required = [c for r in strict for c in r["parameters"]["required_status_checks"]]
+              if not required:
+                  raise RuntimeError("Required strict checks are missing; no rebase requested")
+              pulls = pages("/repos/" + repo + "/pulls?state=open&sort=created&direction=asc&base=" + urllib.parse.quote(base, safe=""))
+              now = datetime.datetime.now(datetime.timezone.utc)
+              for item in pulls:
+                  if not trusted(item, base):
+                      continue
+                  number = item["number"]
+                  pr = request("/repos/" + repo + "/pulls/" + str(number))
+                  if not trusted(pr, base) or pr.get("mergeable_state") != "behind" or pr.get("mergeable") is False:
+                      continue
+                  head = pr["head"]["sha"]
+                  commits = pages("/repos/" + repo + "/pulls/" + str(number) + "/commits")
+                  if not commits or len(commits) != pr["commits"]:
+                      continue
+                  if any((c.get("author") or {}).get("login") != "dependabot[bot]"
+                      or (c.get("committer") or {}).get("login") not in {"dependabot[bot]", "web-flow"}
+                      or not c.get("commit", {}).get("verification", {}).get("verified") for c in commits):
+                      print("PR #" + str(number) + ": human or unverified commits; preserve and inspect manually")
+                      continue
+                  types = [t for c in commits for t in re.findall(r"(?m)^\s*update-type:\s*(\S+)\s*$", c["commit"]["message"])]
+                  if not types or not all(t in allowed for t in types):
+                      continue
+                  if not green_checks(head, required):
+                      continue
+                  base_sha = request("/repos/" + repo + "/git/ref/heads/" + urllib.parse.quote(base, safe=""))["object"]["sha"]
+                  marker = marker_prefix + "head=" + head + " base=" + base_sha + " -->"
+                  comments = pages("/repos/" + repo + "/issues/" + str(number) + "/comments")
+                  for comment in comments:
+                      if comment.get("user", {}).get("login") != "github-actions[bot]":
+                          continue
+                      body = comment.get("body", "")
+                      if marker_prefix not in body or "head=" + head not in body:
+                          continue
+                      age = now - datetime.datetime.fromisoformat(comment["created_at"].replace("Z", "+00:00"))
+                      if age.total_seconds() < 1800:
+                          print("PR #" + str(number) + ": rebase pending; cooldown avoids duplicate requests")
+                          return
+                      if marker in body:
+                          print("::warning::PR #" + str(number) + ": previous rebase request did not change the head; inspect Dependabot response")
+                          return
+                  current = request("/repos/" + repo + "/pulls/" + str(number))
+                  if not trusted(current, base) or current["head"]["sha"] != head or current.get("mergeable_state") != "behind":
+                      continue
+                  comment = request("/repos/" + repo + "/issues/" + str(number) + "/comments", {"body": "@dependabot rebase\n\n" + marker})
+                  print("Requested one safe Dependabot rebase: " + comment["html_url"])
+                  return
+              print("No eligible stale patch/minor update needs a rebase")
+
+          if __name__ == "__main__":
+              main()
