@@ -84,6 +84,9 @@ jobs:
                       if latest["status"] != "completed" or latest["conclusion"] != "success":
                           return False
                       continue
+                  # Bound app checks must not accept an unrelated legacy status.
+                  if source not in {None, 8329}:
+                      return False
                   matched = [s for s in statuses if s["context"] == context]
                   if source == 8329:
                       matched = [s for s in matched if s.get("creator", {}).get("login") in {"vercel", "vercel[bot]"}]
