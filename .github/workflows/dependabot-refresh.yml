@@ -139,8 +139,8 @@ jobs:
                       or not c.get("commit", {}).get("verification", {}).get("verified") for c in commits):
                       print("PR #" + str(number) + ": human or unverified commits; preserve and inspect manually")
                       continue
-                  types = [t for c in commits for t in re.findall(r"(?m)^\s*update-type:\s*(\S+)\s*$", c["commit"]["message"])]
-                  if not types or not all(t in allowed for t in types):
+                  per_commit_types = [re.findall(r"(?m)^\s*update-type:\s*(\S+)\s*$", c["commit"]["message"]) for c in commits]
+                  if any(not types or not all(t in allowed for t in types) for types in per_commit_types):
                       print("PR #" + str(number) + ": Major or unknown update metadata; skipped")
                       continue
                   if not green_checks(head, required):
