@@ -21,7 +21,7 @@
     "vite": "^6.2.3"
   },
   "devDependencies": {
-    "@types/node": "^22.14.0",
+    "@types/node": "^26.6.6",
     "autoprefixer": "^10.6.2",
     "tailwindcss": "^4.3.5",
     "terser": "^5.46.2",
